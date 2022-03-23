@@ -5,6 +5,7 @@ import {map, catchError, switchMap, tap} from 'rxjs/operators'
 import { UserService } from "../services/user.service";
 import { CreateUserSuccessInterface } from "../types/create.user.success.interface";
 import { HttpErrorResponse } from "@angular/common/http";
+import { of } from "rxjs";
 
 @Injectable()
 export class UserEffect {
@@ -18,6 +19,9 @@ export class UserEffect {
                 return this.userService.createUser(request).pipe(
                     map((createdUser: CreateUserSuccessInterface) => {
                         return createUserSuccessAction({createdUser})
+                    }),
+                    catchError(() => {
+                        return of(createFailureAction());
                     })
                    
                 )
