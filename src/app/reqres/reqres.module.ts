@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { userReducers } from './reqres/store/reducers';
 import { UserService } from './reqres/services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffect } from './reqres/effects/user.effects';
 
 const routes: Routes = [
   {
@@ -25,6 +27,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     StoreModule.forFeature('users', userReducers),
+    EffectsModule.forFeature([UserEffect]),
     RouterModule.forChild(routes)
   ],
   providers: [UserService]

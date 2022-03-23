@@ -24,11 +24,7 @@ export class ReqresComponent implements OnInit {
     let data = {
       request
     }
-    this.store.dispatch(createUserAction(data))
-    console.log(request);
-    this.userService.createUser(request).subscribe(data => {
-      console.log(data);
-    })
+    this.store.dispatch(createUserAction(data));
   }
 
 }
