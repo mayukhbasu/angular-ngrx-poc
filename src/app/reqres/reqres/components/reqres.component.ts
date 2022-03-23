@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { UserService } from '../services/user.service';
+import { createUserAction } from '../store/actions';
 import { FormInputInterface } from '../types/form.input.interface';
 
 @Component({
@@ -12,13 +15,20 @@ export class ReqresComponent implements OnInit {
     name: '',
     job: ''
   }
-  constructor() { }
+  constructor(private store: Store, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(formData:FormInputInterface) : void {
-    console.log(formData);
+  onSubmit(request:FormInputInterface) : void {
+    let data = {
+      request
+    }
+    this.store.dispatch(createUserAction(data))
+    console.log(request);
+    this.userService.createUser(request).subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

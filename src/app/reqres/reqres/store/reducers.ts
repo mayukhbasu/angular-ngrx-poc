@@ -1,4 +1,4 @@
-import { createReducer, on } from "@ngrx/store";
+import { Action, createReducer, on } from "@ngrx/store";
 import { UserStateInterface } from "../types/user.state.interface";
 import { createFailureAction, createUserAction, createUserSuccessAction } from "./actions";
 
@@ -30,3 +30,6 @@ const userReducer = createReducer(
     }))
 )
 
+export function userReducers(state: UserStateInterface, action: Action){
+    return userReducer(state, action);
+}
