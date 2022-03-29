@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChangeDetectionModule } from './change-detection/change-detection.module';
 import { ReqresModule } from './reqres/reqres.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ReqresModule } from './reqres/reqres.module';
     BrowserModule,
     AppRoutingModule,
     ReqresModule,
+    ChangeDetectionModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

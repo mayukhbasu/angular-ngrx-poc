@@ -10,3 +10,7 @@ export const createUserSuccessAction = createAction(ActionTypes.CREATE_USER_SUCC
     props<{createdUser: CreateUserSuccessInterface}>());
 
 export const createFailureAction = createAction(ActionTypes.CREATE_USER_FAILURE);
+
+export const getUsersAction = createAction(ActionTypes.GET_USER);
+export const getUsersActionSuccess = createAction(ActionTypes.CREATE_USER_SUCCESS);
+export const getUsersActionFailure = createAction(ActionTypes.CREATE_USER_FAILURE);

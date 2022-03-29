@@ -13,7 +13,7 @@ import { UserEffect } from './reqres/effects/user.effects';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: ReqresComponent
   }
 ]
