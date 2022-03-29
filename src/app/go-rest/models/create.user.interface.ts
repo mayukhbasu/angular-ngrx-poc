@@ -1,6 +1,6 @@
-export interface User {
+export interface Person {
     name: string;
     email: string;
     gender: string;
-    status: boolean
+    status: string
 }

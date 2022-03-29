@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '../models/create.user.interface';
+import { Store } from '@ngrx/store';
 import { FormService } from '../services/form.service';
+import { createPersonAction } from '../store/actions';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,7 @@ export class FormComponent implements OnInit {
 
   myForm: FormGroup;
   genders:string[] = ['male', 'female', 'NA'];
-  constructor(private formService: FormService) { }
+  constructor(private formService: FormService, private store: Store) { }
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
@@ -25,16 +26,15 @@ export class FormComponent implements OnInit {
 
   onSubmit(): void {
     if(this.myForm.valid){
-      let user: User = {
-        name: this.myForm.controls.name.value,
-        email: this.myForm.controls.email.value,
-        gender: this.myForm.controls.gender.value,
-        status: this.myForm.controls.status.value
-
+      let userRequest = {
+        request: {
+          name: this.myForm.controls.name.value,
+          email: this.myForm.controls.email.value,
+          gender: this.myForm.controls.gender.value,
+          status: this.myForm.controls.status.value ? 'active': 'inactive'
+        }
       }
-      this.formService.createUser(user).subscribe(data => {
-        console.log(data);
-      })
+      this.store.dispatch(createPersonAction(userRequest))
     }
   }
 
