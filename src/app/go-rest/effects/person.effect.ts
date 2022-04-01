@@ -25,4 +25,20 @@ export class PersonEffect{
             })
         )
     )
+
+    getUser$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(createPersonAction),
+            switchMap(({request}) => {
+                return this.formService.createUser(request).pipe(
+                    map((createdPerson: PersonResponse) => {
+                        return createPersonActionSuccess({createdPerson})
+                    }),
+                    catchError(() => {
+                        return of(createPersonActionFailure())
+                    })
+                )
+            })
+        )
+    )
 }

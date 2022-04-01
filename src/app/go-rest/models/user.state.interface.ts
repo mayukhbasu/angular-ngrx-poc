@@ -5,4 +5,5 @@ export interface PersonStateInterface {
     createdUser: PersonResponse | null;
     isLoading: boolean;
     error: boolean | null;
+    getPersons: PersonResponse[] | null;
 }
