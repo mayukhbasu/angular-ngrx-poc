@@ -10,6 +10,6 @@ export const createPersonActionSuccess = createAction(ActionTypes.CREATE_PERSON_
 export const createPersonActionFailure = createAction(ActionTypes.CREATE_PERSON_FAILURE,
 );
 export const getPersons = createAction(ActionTypes.GET_PERSON);
-export const getPersonsSuccess = createAction(ActionTypes.GET_PERSON,
+export const getPersonsSuccess = createAction(ActionTypes.GET_PERSON_SUCCESS,
     props<{getPersons: PersonResponse[]}>());
 export const getPersonsFailure = createAction(ActionTypes.GET_PERSON_FAILURE);

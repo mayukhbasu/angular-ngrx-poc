@@ -38,9 +38,11 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="status">
                 <label class="form-check-label ml-3" for="exampleCheck1">Status</label>
               </div>
-            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            <button type="submit" class="btn btn-primary mr-5">Submit</button>
+            <button class="btn btn-primary" style="margin-left: 10px;" (click)="getlatestData()">Get Latest Record</button>
           </form>
     </div>
     
 </div>
-<button class="btn btn-primary">Get Latest Record</button>
+
+{{users$ | async | json}}

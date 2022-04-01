@@ -8,3 +8,5 @@ PersonStateInterface>('persons');
 export const getPersonsSelector = createSelector(PersonFeatureSelector, (personState:PersonStateInterface) =>
     personState.getPersons
 )
+
+

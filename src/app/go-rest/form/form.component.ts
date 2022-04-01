@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { PersonResponse } from '../models/response.user.interface';
 import { FormService } from '../services/form.service';
-import { createPersonAction } from '../store/actions';
+import { createPersonAction, getPersons } from '../store/actions';
+import { getPersonsSelector } from '../store/person.selector';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +16,7 @@ export class FormComponent implements OnInit {
 
   myForm: FormGroup;
   genders:string[] = ['male', 'female', 'NA'];
+  users$: Observable<PersonResponse[]>
   constructor(private formService: FormService, private store: Store) { }
 
   ngOnInit(): void {
@@ -21,7 +25,8 @@ export class FormComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.pattern("[^ @]*@[^ @]*")]),
       gender: new FormControl('male', Validators.required),
       status: new FormControl(false)
-    })
+    });
+    this.users$ = this.store.pipe(select(getPersonsSelector))
   }
 
   onSubmit(): void {
@@ -36,6 +41,11 @@ export class FormComponent implements OnInit {
       }
       this.store.dispatch(createPersonAction(userRequest))
     }
+    
   }
 
+  getlatestData(){
+    this.store.dispatch(getPersons());
+  }
+  
 }

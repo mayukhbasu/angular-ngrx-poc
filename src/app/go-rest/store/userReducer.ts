@@ -1,14 +1,15 @@
 import { Action, createReducer, on } from "@ngrx/store";
 
 import { PersonStateInterface } from "../models/user.state.interface";
-import { createPersonAction, createPersonActionFailure, createPersonActionSuccess } from "./actions";
+import { createPersonAction, createPersonActionFailure, createPersonActionSuccess, getPersons, getPersonsFailure, getPersonsSuccess } from "./actions";
 
 
 const initialState: PersonStateInterface = {
     isSubmitting: false,
     createdUser: null,
     isLoading: false,
-    error: null
+    error: null,
+    getPersons: null
 }
 
 const personReducer = createReducer(
@@ -27,7 +28,24 @@ const personReducer = createReducer(
         ...state,
         isSubmitting: false,
         isLoading: false,
-    }))
+    })),
+    on(getPersons, (state):PersonStateInterface => ({
+        ...state,
+        isSubmitting: true,
+        isLoading: true,
+        
+    })),
+    on(getPersonsSuccess, (state, action):PersonStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        isLoading: false,
+        getPersons: action.getPersons
+    })),
+    on(getPersonsFailure, (state):PersonStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        isLoading: false,
+    })),
 )
 
 export function personReducers(state: PersonStateInterface, action: Action){
