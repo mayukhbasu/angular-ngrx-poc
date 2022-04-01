@@ -4,7 +4,7 @@ import { of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
 import { PersonResponse } from "../models/response.user.interface";
 import { FormService } from "../services/form.service";
-import { createPersonAction, createPersonActionFailure, createPersonActionSuccess } from "../store/actions";
+import { createPersonAction, createPersonActionFailure, createPersonActionSuccess, getPersons, getPersonsFailure, getPersonsSuccess } from "../store/actions";
 
 @Injectable()
 export class PersonEffect{
@@ -28,14 +28,14 @@ export class PersonEffect{
 
     getUser$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(createPersonAction),
-            switchMap(({request}) => {
-                return this.formService.createUser(request).pipe(
-                    map((createdPerson: PersonResponse) => {
-                        return createPersonActionSuccess({createdPerson})
+            ofType(getPersons),
+            switchMap(() => {
+                return this.formService.getPerson().pipe(
+                    map((getPersons: PersonResponse[]) => {
+                        return getPersonsSuccess({getPersons})
                     }),
                     catchError(() => {
-                        return of(createPersonActionFailure())
+                        return of(getPersonsFailure())
                     })
                 )
             })
