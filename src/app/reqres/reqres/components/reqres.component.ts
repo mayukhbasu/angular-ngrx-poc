@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnInit, Optional, ViewChild } from '@angular/core';
 import { select, Store, StoreConfig } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
@@ -13,7 +13,7 @@ import { UserStateInterface } from '../types/user.state.interface';
   templateUrl: './reqres.component.html',
   styleUrls: ['./reqres.component.css']
 })
-export class ReqresComponent implements OnInit {
+export class ReqresComponent implements OnInit, AfterViewInit {
 
   formInput: FormInputInterface = {
     name: '',
@@ -21,11 +21,18 @@ export class ReqresComponent implements OnInit {
   }
   isLoading$: Observable<boolean> | undefined;
   createduser$: Observable<CreateUserSuccessInterface> | undefined;
-
-  constructor(private store: Store) { }
+  @ViewChild('name') input;
+  constructor(private store: Store, private ngZone: NgZone) { }
+  
 
   ngOnInit(): void {
     this.initialValues();
+    this.ngZone.runOutsideAngular(() => {
+      setTimeout(() => {
+        // update component data and don't trigger change detection
+        console.log("test")
+      });
+    });
   }
 
   initialValues(): void {
@@ -39,6 +46,10 @@ export class ReqresComponent implements OnInit {
       request
     }
     this.store.dispatch(createUserAction(data));
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.input.nativeElement);
   }
 
 }
