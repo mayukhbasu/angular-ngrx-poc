@@ -1,0 +1,13 @@
+1. Ng content -- Done
+2. viewInit/contentInit --- Done
+3. Angular testing --- Done
+4. Performance revision(ng zone, devtools)
+5. Web worker/ service worker revision --- Done
+6. Revise the test.js and games developed yesterday
+7. Angular Routing
+8. Change detection --- Done
+9. Spread Operator --- Done
+10. Mergemap/switchmap, multicast, hot and cold observables -- Done
+(Mergemap requires all the http requests to be completed, but switchmap cancels the request)
+
+- inline element default width - 

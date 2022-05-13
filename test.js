@@ -4,6 +4,7 @@
 //     console.log(x);
 //     console.log(myValue);
 
+
 //     return  childFunction = () => {
 //         console.log(x+=5);
 //         console.log(myValue += 1);
@@ -11,6 +12,9 @@
 
     
 // }
+// let func = parentFunction();
+// func();
+// func();
 
 // const result = parentFunction();
 // result();
@@ -55,13 +59,13 @@
 
 //   for(let code of codes){
 //       console.log(code);
-// //   }
-// let user = {
+//    }
+// let user1 = {
 //     name: "John",
 //     age: 30,
 //     isAdmin: true
 //   };
-//   for(let key of user){
+//   for(let key of Object.entries(user1)){
 //       console.log(key)
 //   }
 // let user = { name: 'John' };
@@ -138,6 +142,7 @@
 //   let user = makeUser();
   
 //   console.log( user.ref.name ); 
+
 // function makeUser(){
 //     return {
 //         name: "John",
@@ -171,6 +176,8 @@
 // ladder.down();
 // ladder.showStep(); // 0
 //ladder.up().up().down().showStep().down().showStep();
+
+
 // function BigUser() {
 
 //     this.name = "John";
@@ -178,11 +185,16 @@
 //     return { name: "Godzilla" };  // <-- returns this object
 //   }
 //   console.log(new BigUser().name);
+
+
+
 // function SmallUser () {
 //     this.name = "John";
 //     return;
 // }
 // console.log(new SmallUser().name);
+
+
 // let obj = {};
 // function A(){
 //     return obj;
@@ -192,6 +204,8 @@
 // }
 
 // console.log(new A() === new B());
+
+
 // function Acc(startingValue){
 //     this.value = startingValue;
 //     this.read = function(){
@@ -234,6 +248,8 @@
 
 // //for (let key in user) console.log(key); 
 // console.log(user[id]);
+
+
 // let user = {
 //     name: "John",
 //     money: 1000,
@@ -249,7 +265,9 @@
 //     }
   
 //   };
-//   console.log(user);
+//    console.log(user + 100);
+
+
 //console.log("2" + 2);
 // let str = new String()
 
@@ -262,15 +280,19 @@
 //console.log(isNaN(NaN));
 //console.log(isFinite(Infinity));
 //console.log(parseInt('12.5.2.2px'));
+
+
 // let i = 0;
 // while (i != 10) {
 //   i += 0.2;
 // }
+
+
 // let str = "a123aa";
 // console.log(+str.slice(1,4));
 // let arr = ["I", "study", "JavaScript"];
 // var result = arr.splice(1, 1, "Max", "Max2");
-// console.log(result);
+// console.log(arr);
 // let arr = ["I", "study", "JavaScript"];
 // var result = arr.splice(2, 0, "complex", "language");
 // console.log(result);
@@ -310,7 +332,7 @@
 // let arr = [];
 // arr.reduce((sum, current) => sum + current);
 // console.log(arr);
-// camelize("-webkit-transition")
+//  camelize("-webkit-transition")
 // function camelize(str){
 //     let strArray = str.split("-");
 //     let result = strArray.map((word, index) => index == 0? word : word[0].toUpperCase() + word.slice(1)).join('');
@@ -372,6 +394,8 @@
 // set.add(john);
 // set.delete(john);
 // console.log(set);
+
+
 // function aclean(arr) {
 //     let map = new Map();
 //     for(let word of arr){
@@ -384,6 +408,16 @@
 //   let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
   
 //   console.log( aclean(arr) );
+// const removeAnagram = (arr) => {
+//     let map = new Map();
+//     for(let i = 0; i < arr.length ; i++){
+//         let sorted = arr[i].split('').sort().join();
+//         map.set(sorted, arr[i]);
+//     }
+//     return map.values();
+// }
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// console.log( removeAnagram(arr) );
 // let map = new Map();
 
 // map.set("name", "John");
@@ -483,6 +517,130 @@
 // let arr = [1,2,3,4,5]
 // const x = arr.reduce((a, b) => a+b, 0);
 // console.log(x);
-let arr = ["I", "study", "JavaScript"];
-var result = arr.splice(1, 1, "Max", "Max2");
-console.log(arr);
+// let arr = ["I", "study", "JavaScript"];
+// var result = arr.splice(1, 1, "Max", "Max2");
+// console.log(arr);
+
+
+    // function f(x) {
+    //    console.log(x);
+    //   }
+    //   const delay = (f , ms) => {
+    //       return function(){
+    //           setTimeout(() => f.call(this, "abc"), ms)
+    //       }
+    //   }
+    //   // create wrappers
+    //   let f1000 = delay(f, 1000);
+    //   let f1500 = delay(f, 1500);
+      
+    //   f1000("test"); 
+    //   f1500("test");
+
+    // let users = [
+    //         {id: 'john', name: "John Smith", age: 20},
+    //         {id: 'ann', name: "Ann Smith", age: 24},
+    //         {id: 'pete', name: "Pete Peterson", age: 31},
+    //       ];
+
+    // let res = users.reduce((acc, element) => {
+    //     acc[element.id] = element;
+    //     return acc;
+    // }, {})
+    // console.log(res);
+    // let john = { name: "John" };
+
+    // let test = john
+
+    // john = null;
+    // console.log(test);
+    // let map = new Map();
+    // let john = { name: "John" };
+    // map.set(john, "Hello");
+    // john = null;
+    // console.log(map.get(john))
+
+
+    // let map = new WeakMap();
+    // let john = { name: "John" };
+    // map.set(john, "hello");
+    // john = null;
+    // console.log(map.get(john));
+
+//     let visitedSet = new WeakSet();
+
+// let john = { name: "John" };
+// let pete = { name: "Pete" };
+// let mary = { name: "Mary" };
+
+// visitedSet.add(john); // John visited us
+// visitedSet.add(pete); // Then Pete
+// visitedSet.add(john); // John again
+
+// visitedSet has 2 users now
+
+// check if John visited?
+//console.log(visitedSet.has(john)); // true
+
+// check if Mary visited?
+//console.log(visitedSet.has(mary)); // false
+
+// john = null;
+// console.log(visitedSet);
+
+// var car = Object.create({name: "Mayukh", model: "Tesla"});
+
+// delete car.__proto__.model
+// console.log(car.model);
+// let arr = [1,2,3,4,5];
+// arr.length = 2;
+// console.log(arr[3])
+// let a = {name: "xx"};
+// let b = a;
+// a = null;
+// console.log(b);
+// for (var i = 0; i < 3; i++) {
+//     setTimeout(function() { console.log(i); }, 1000 + i);
+//   }
+// for(var i = 0; i < 10; i++){
+//     setTimeout(function(input){
+//         return function(){
+//             console.log(input);
+//         }
+//     }(i), 1000)
+// }
+// let timerID = setTimeout(() => {console.log("test")}, 1000);
+// clearTimeout(timerID);
+// let timerID = setTimeout(function test(){
+//     console.log("test");
+//     setTimeout(test, 1000)
+// }, 2000)
+
+
+// const timeoutPractice = (from , to) => {
+//     let current = from;
+//     setTimeout(function go(){
+//         console.log(current);
+//         if(current < to){
+//             setTimeout(go, 1000)
+//         }
+//         current++;
+//     }, 1000)
+// }
+
+// timeoutPractice(3, 8);
+
+// const timeoutPractice = (from , to) => {
+//     let current = from ; 
+//     let timerID = setInterval(() => {
+//         console.log(current);
+//         if(current === to){
+//             clearInterval(timerID)
+//         }
+//         current ++;
+//     }, 1000)
+// }
+
+// timeoutPractice(3, 8);
+const str = "abcd";
+console.log(str.substring(1,2));

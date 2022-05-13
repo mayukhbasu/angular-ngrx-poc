@@ -25,6 +25,7 @@ export class GrandparentComponent implements OnInit {
     console.log("Button clicked");
     //this.dataToParent = {data: this.textInput}
     this.users[0] = {...this.users[0], name: "Armor King"};
+    //this.users[0].name = "King";
   }
 
 }

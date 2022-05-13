@@ -8,13 +8,14 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ButtonComponent } from './button/button.component';
 import { ChangeDetectionModule } from './change-detection/change-detection.module';
-import { FormInterceptor } from './go-rest/services/form.interceptor';
 import { ReqresModule } from './reqres/reqres.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
