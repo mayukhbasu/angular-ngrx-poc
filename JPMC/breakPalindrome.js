@@ -3,14 +3,14 @@ function breakPalindrome(str) {
     for(let i = 0; i < Math.floor(charArray.length/2); i++) {
         if(charArray[i] !== 'a'){
             charArray[i] = 'a';
-            return charArray;
-        } 
+            return charArray.join("")
+        }
     }
     charArray[charArray.length - 1] = 'b';
-    return charArray;
+    return charArray.join("")
 }
 
-let str = "abccba";
+let str = "axa";
 console.log(breakPalindrome(str));
 
 
