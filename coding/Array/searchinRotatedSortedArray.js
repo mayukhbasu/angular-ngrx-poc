@@ -1,21 +1,21 @@
 const search = (nums, target) => {
-    let left = 0, right = nums.length - 1;
-    while(left < right){
-        let mid = (left + right) / 2;
-        if(nums[left] < nums[mid]){
-            if(target > nums[left] && target < nums[mid]) {
-                right = mid - 1;
+    let low = 0, high = nums.length - 1;
+    while(low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        if(arr[mid] === target) return mid;
+        if(arr[low] <= arr[mid]) {
+            if(target >= arr[i] && target < arr[mid]){
+                high = mid - 1;
             } else {
-                left = mid + 1;
+                low = mid + 1;
             }
         } else {
-            if(target > nums[mid] && target < nums[right]){
-                left = mid + 1;
+            if(target > arr[mid] && target <= arr[high]){
+                low = mid + 1;
             } else {
-                right = mid - 1;
+                high = mid - 1;
             }
         }
-        if(nums[mid] === target) return mid;
     }
     return - 1;
 }

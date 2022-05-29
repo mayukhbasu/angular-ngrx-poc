@@ -66,9 +66,9 @@ function isValidString(str)
 let str = "abcbc";
 isValidString(str)
 		if (isValidString(str)) {
-			document.write("YES");
+			console.log("YES");
 		} else {
-			document.write("NO");
+			console.log("NO");
 		}
 
 // This code is contributed by ab2127

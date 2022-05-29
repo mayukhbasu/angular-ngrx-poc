@@ -11,13 +11,15 @@
 //     }
 
     
-// }
+//  }
+
 // let func = parentFunction();
 // func();
 // func();
 
 // const result = parentFunction();
 // result();
+
 
 
 //IIFE
@@ -30,6 +32,8 @@
 // privateCounter();
 // privateCounter();
 // privateCounter();
+
+
 // const person = {
 //     alive: true
 // }
@@ -38,7 +42,7 @@
 //     plays: true
 // }
 
-// Object.setPrototypeOf(musician, person);
+//  Object.setPrototypeOf(musician, person);
 
 // const guitarist = {
 //     strings: 6,
@@ -46,10 +50,13 @@
 // }
 
 // console.log(guitarist.alive);
+
 // let key = "likes birds";
 // let user = {}
 // user[key] = true;
 // console.log(user);
+
+
 // let codes = {
 //     "49": "Germany",
 //     "41": "Switzerland",
@@ -57,9 +64,10 @@
 //     "1": "USA"
 //   };
 
-//   for(let code of codes){
+//   for(let code in codes){
 //       console.log(code);
 //    }
+
 // let user1 = {
 //     name: "John",
 //     age: 30,
@@ -68,6 +76,8 @@
 //   for(let key of Object.entries(user1)){
 //       console.log(key)
 //   }
+
+
 // let user = { name: 'John' };
 
 // let admin = user;
@@ -75,9 +85,13 @@
 // admin.name = 'Pete'; // changed by the "admin" reference
 
 // console.log(admin === user);
+
+
 // let a = {};
 // let b = {}; 
 // console.log(a == b);
+
+
 // let user = {
 //     name: "John",
 //     age: 30
@@ -89,15 +103,21 @@
 // }
 
 // console.log(cloned);
+
+
 // let user = { name: "John" };
 
 // let permissions1 = { canView: true };
 // let permissions2 = { canEdit: true };
 // Object.assign(user, permissions1, permissions2);
 // console.log(user);
+
+
 // let user = { name: "John" };
 // Object.assign(user, {name: "King"});
 // console.log(user);
+
+
 // let user = {
 //     name: "John",
 //     sizes: {
@@ -108,7 +128,8 @@
   
 //   let clone = Object.assign({}, user);
   
-//   console.log( user.sizes === clone.sizes ); // 
+//   console.log(clone); // 
+
 // let user = {
 //     // ...
 //     a: 1,
@@ -120,8 +141,14 @@
 //     console.log(this.name);
 //   };
   
-//   // then add as a method
+// //   // then add as a method
 //   sayHi.call(user)
+// let user = {name: "Mayukh"};
+// function testCall(x1, x2){
+//   console.log(this.name, x1, x2);
+// }
+// testCall.call(user, 10, 20);
+
 // let user = {
 //     firstName: "Ilya",
 //     sayHi() {
@@ -129,8 +156,12 @@
 //         console.log(this.firstName);
 //       }
 //       arrow();
+//       return 2
 //     }
+    
 //   };
+//   console.log(user.sayHi())
+
 
 // function makeUser() {
 //     return {
@@ -145,7 +176,7 @@
 
 // function makeUser(){
 //     return {
-//         name: "John",
+//         name: "Max",
 //         ref(){
 //             return this
 //         }
@@ -153,7 +184,8 @@
 // }
 
 // let user = makeUser();
-// console.log(user.ref().name)
+// console.log(user.ref().name);
+
 // let ladder = {
 //     step: 0,
 //     up() {
@@ -203,7 +235,7 @@
 //     return obj;
 // }
 
-// console.log(new A() === new B());
+//  console.log(new A() === new B());
 
 
 // function Acc(startingValue){
@@ -274,8 +306,8 @@
 // str.test = 5;
 
 // console.log(str.test);
-// let num = 255;
-// console.log(num.toString(16));
+//  let num = 255;
+//  console.log(num.toString(16));
 //console.log( 9999999999999999 ); 
 //console.log(isNaN(NaN));
 //console.log(isFinite(Infinity));
@@ -290,6 +322,8 @@
 
 // let str = "a123aa";
 // console.log(+str.slice(1,4));
+
+
 // let arr = ["I", "study", "JavaScript"];
 // var result = arr.splice(1, 1, "Max", "Max2");
 // console.log(arr);
@@ -368,8 +402,14 @@
 //         return obj;
 //       }, {})
 //   }
-//   let usersById = groupById(users);
-//   console.log(usersById)
+  // function groupById(arr) {
+  //     return arr.reduce((obj, current) => {
+  //         obj[current.age] = current;
+  //         return obj;
+  //     }, {})
+  // }
+  // let usersById = groupById(users);
+  // console.log(usersById)
 
 // let map = new Map();
 
@@ -386,14 +426,14 @@
 // ]);
 
 // console.log(prices);
-// let set = new Set();
-// let john = { name: "John" };
-// let pete = { name: "Pete" };
-// let mary = { name: "Mary" };
-// set.add(john);
-// set.add(john);
-// set.delete(john);
-// console.log(set);
+let set = new Set();
+let john = { name: "John" };
+let pete = { name: "Pete" };
+let mary = { name: "Mary" };
+set.add(john);
+set.add(pete);
+set.delete(john);
+console.log(set);
 
 
 // function aclean(arr) {
@@ -642,5 +682,16 @@
 // }
 
 // timeoutPractice(3, 8);
-const str = "abcd";
-console.log(str.substring(1,2));
+// const str = "abcd";
+// console.log(str.substring(1,2));
+// let vSet = new Set();
+// const explore = (num) => {
+//   if(vSet.has(num)) return false;
+//   for(let i = 0; i< 20; i++) {
+//     vSet.add(i);
+//     explore(i)
+//   }
+//   return true;
+// }
+
+// console.log(explore(20));

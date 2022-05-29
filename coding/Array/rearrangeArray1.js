@@ -5,11 +5,11 @@ function rearrangeArray(arr) {
             arr[arr[i]] = arr[i];
             arr[i] = element;
         } else {
-            i ++;
+            i++;
         }
     }
     console.log(arr);
 }
 
-let arr = [-1, -1, 6, 1, 9, 2, 3, -1, 4, -1 ];
+let arr = [-1, -1, 9, 1, 6, 2, 3, -1, 4, -1 ];
 rearrangeArray(arr);

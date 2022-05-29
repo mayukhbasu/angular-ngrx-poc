@@ -1,22 +1,14 @@
-function findMin(arr, low, high)
-{
-    while(low < high){
-        let mid = (high + low) /2;
-        if(arr[mid] === arr[high]){
-            high --;
-        }
-        if(arr[mid] > arr[high]) {
-            low = mid + 1;
-        }
-        if(arr[mid] < arr[high]){
-            high = mid;
-        }
+function findMin(arr, start, end) {
+    while(start < end) {
+        let mid = Math.floor((start + end) / 2);
+        if(arr[mid] === arr[end]) end --;
+        if(arr[mid] > arr[end]) start = mid + 1;
+        if(arr[mid] < arr[end]) end = mid;
     }
-    return arr[high];
+    return arr[start];
 }
- 
-var arr1 = [5, 6, 1, 2, 3, 4];
+var arr1 = [8, 11, 13, 15, 1, 4, 6];
 var n1 = arr1.length;
 findMin(arr1, 0, n1-1)
-console.log("The minimum element is " + findMin(arr1, 0, n1-1));
+console.log(findMin(arr1, 0, n1-1));
  

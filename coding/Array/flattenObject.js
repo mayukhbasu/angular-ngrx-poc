@@ -2,8 +2,8 @@ const flattenObj = (obj) => {
     let result = {};
     for(const key in obj) {
         if(typeof(obj[key]) === 'object' && !Array.isArray(obj[key])) {
-            const temp = flattenObj(obj[key]);
-            for(const j in temp) {
+            let temp = flattenObj(obj[key]);
+            for(const j in temp){
                 result[key+"."+j] = temp[j];
             }
         } else {
@@ -11,11 +11,20 @@ const flattenObj = (obj) => {
         }
     }
     return result;
-}
+} 
+    
+
 let obj = {
-    name: "Mayukh",
+    "name": "Mayukh",
     tekken: {
-        "character": "Armor king"
+        "character": "Armor king",
+        style: {
+            hand: "1",
+            leg: 2,
+            place: {
+                state: "Mexico"
+            }
+        }
     }
 }
 console.log(flattenObj(obj))

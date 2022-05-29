@@ -1,10 +1,10 @@
 function findMaxWater(arr) {
     let maxArea = 0;
     let left = 0, right = arr.length - 1;
-    while(left < right) {
-        width = right - left;
-        maxArea = Math.max(maxArea, width * Math.min(arr[left], arr[right]));
-        if(arr[left] < arr[right]) {
+    while(left < right){
+        let width = right - left;
+        maxArea = Math.max(maxArea, width *Math.min(arr[left], arr[right]));
+        if(arr[left] < arr[right]){
             left ++;
         } else {
             right --;

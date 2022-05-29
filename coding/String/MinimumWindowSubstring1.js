@@ -16,7 +16,7 @@ function Minimum_Window(source, test)
                 
                 if(ans > j - i + 1) {
                     ans = Math.min(ans, j - i + 1);
-                    start = i;
+                   
                 }
                 tempArray[source[i].charCodeAt(0)] ++;
                 if(tempArray[source[i].charCodeAt(0)] > 0) count ++;

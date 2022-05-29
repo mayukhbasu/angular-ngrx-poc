@@ -1,17 +1,17 @@
-const { ɵɵclassMapInterpolate1 } = require("@angular/core");
 
 function rearrange(arr,n,x)
 {
-	let map1 = new Map();
-    for(let i = 0; i < n; i++) {
-        map1.set(arr[i], Math.abs(x - arr[i]));
-    }
-    let map2 = new Map([...map1.entries()].sort((a,b) => a[1] - b[1]));
-    let index = 0;
-    for(const [key, value] of map2.entries()) {
-        arr[index ++] = key;
-    }
-    console.log(arr);
+    let map1 = new Map();
+	// let map1 = new Map();
+    // for(let i = 0; i < n; i++) {
+    //     map1.set(arr[i], Math.abs(x - arr[i]));
+    // }
+    // let map2 = new Map([...map1.entries()].sort((a,b) => a[1] - b[1]));
+    // let index = 0;
+    // for(const [key, value] of map2.entries()) {
+    //     arr[index ++] = key;
+    // }
+    // console.log(arr);
 }
 
 // Function to print the array

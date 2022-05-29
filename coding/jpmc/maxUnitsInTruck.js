@@ -1,8 +1,8 @@
 function findMaxUnits(boxTypes, truckSize) {
-    boxTypes.sort((a,b) => b[1] - a[1])
+    boxTypes.sort((a,b) => a[1] - b[1]);
     let units = 0;
     for(let i = 0; i < boxTypes.length; i++) {
-        let boxCount = Math.min(truckSize, boxTypes[i][0]);
+        boxCount = Math.min(truckSize, boxTypes[i][0]);
         units += boxCount * boxTypes[i][1];
         truckSize -= boxCount;
         if(truckSize === 0) break;
