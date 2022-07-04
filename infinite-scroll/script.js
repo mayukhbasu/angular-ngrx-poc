@@ -1,3 +1,5 @@
+
+"use strict";
 const postsContainer = document.getElementById('post-container');
 const loading = document.querySelector('.loader');
 const filter = document.getElementById('filter');
@@ -51,3 +53,7 @@ function showLoading(){
     
     loading.classList.add('show');
 }
+
+const obj = {test: 1};
+Object.freeze(obj);
+obj.test = 2;

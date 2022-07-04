@@ -1,28 +1,29 @@
-function max(x, y) {
-    return x> y? x : y;
-}
+const maxDifference = (arr, n) => {
 
-function min(x, y) {
-    return x < y ? x: y;
-}
-
-function maxIndexDiff(arr, n) {
-    let maxDiff;
-    let i , j;
-    let rMax = new Array(n);
-    let lMin = new Array(n);
+    let lMin = [];
+    let rMax = [];
+    let maxDiff = 0;
     lMin[0] = arr[0];
-    for(i = 1; i < n; i++) {
-        lMin[i] = min(arr[i], lMin[i-1]);
+    rMax[arr.length - 1] = arr[arr.length - 1];
+    for(let i = 1; i < arr.length ; i++) {
+        lMin[i] = Math.min(arr[i], lMin[i - 1]);
     }
-    rMax[n - 1] = arr[n - 1];
-    for(j = n - 2; i >= 0; i--) {
-        rMax[j] = max(arr[j], rMax(j + 1));
+    for(let i = arr.length - 2; i >= 0; i--) {
+        rMax[i] = Math.max(arr[i], rMax[i+1]);
     }
-    i = 0, j = 0;
-    while(j < n && i < n) {
+    let i = 0, j = 0;
+    while(i < arr.length && j < arr.length) {
         if(lMin[i] <= rMax[j]) {
-            maxDiff 
+            maxDiff = Math.max(maxDiff, j - i);
+            j++;
+        } else {
+            i++;
         }
     }
+    return maxDiff;
+    
 }
+
+let arr = [ 9, 2, 3, 4, 5, 6, 7, 8, 18, 0 ];
+let n = arr.length;
+console.log(maxDifference(arr, n));

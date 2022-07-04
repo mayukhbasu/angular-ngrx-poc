@@ -19,9 +19,12 @@ class Node {
 // }
 
 const treeIncludes = (root, target) => {
-    if(root === null) return false;
+    if(root == null) return false;
     if(root.val === target) return true;
     return treeIncludes(root.left, target) || treeIncludes(root.right, target);
+    // if(root === null) return false;
+    // if(root.val === target) return true;
+    // return treeIncludes(root.left, target) || treeIncludes(root.right, target);
 }
 
 const a = new Node("a");
@@ -37,4 +40,4 @@ b.left = d;
 b.right = e;
 c.right = f;
 //console.log(treeIncludesBFS(a, "e"));
-console.log(treeIncludes(a, "e"));
+console.log(treeIncludes(a, "f"));

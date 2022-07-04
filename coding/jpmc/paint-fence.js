@@ -2,12 +2,21 @@ const paintFence = (fences, color) => {
     let same = color * 1;
     let different = color * (color - 1);
     let total = same + different;
-    for(let i = 3; i <= fences; i++) {
+    for(let i = 3; i < fences; i++) {
         same = different * 1;
         different = total * (color - 1);
-        total = same + total;
+        total = same + different;
     }
     return total;
+    // let same = color * 1;
+    // let different = color * (color - 1);
+    // let total = same + different;
+    // for(let i = 3; i <= fences; i++) {
+    //     same = different * 1;
+    //     different = total * (color - 1);
+    //     total = same + different;
+    // }
+    // return total;
 }
 
 console.log(paintFence(7,2));

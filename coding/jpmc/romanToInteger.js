@@ -20,17 +20,6 @@ function romanToInteger(str) {
         }
     }
     return sum;
-    // let sum = 0;
-    // for(let i = 0; i < str.length; i++) {
-    //     if(i !== str.length - 1 
-    //         && roman.get(str.charAt(i)) < roman.get(str.charAt(i+1))){
-    //             sum += roman.get(str.charAt(i+1)) - roman.get(str.charAt(i));
-    //             i++;
-    //     } else {
-    //         sum += roman.get(str.charAt(i));
-    //     }
-    // }
-    // return sum;
 }
 
 var input = "MCMIV";

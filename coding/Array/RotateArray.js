@@ -1,17 +1,15 @@
 function reverseArray(arr, start, end){
-    while(start < end){
-        var temp = arr[start];
-        arr[start] = arr[end];
-        arr[end] = temp;
-        start ++;
-        end --;
-    }
+   while(start < end) {
+    [arr[start], arr[end]] = [arr[end], arr[start]];
+    start++;
+    end--;
+   }
 }
 
 function leftRotate(arr, d, n) {
     if(d === 0) return;
-    reverseArray(arr, 0, d- 1);
-    reverseArray(arr, d , n- 1);
+    reverseArray(arr, 0 , d - 1);
+    reverseArray(arr, d, n - 1);
     reverseArray(arr, 0, n - 1);
 }
 

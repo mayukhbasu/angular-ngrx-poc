@@ -60,23 +60,23 @@
 //     updateDebounceText(e.target.value);
 // });
 
-// function debounce(cb, delay = 1000) {
+// function debounce(cb, delay = 100) {
 //     let timeout;
 //     return (...args) => {
 //         clearTimeout(timeout);
-//         timeout =  setTimeout(() => {
-//             cb(...args)
+//         timeout = setTimeout(() => {
+//             cb(...args);
 //         }, delay)
 //     }
 // }
-//Debounce
+
 // function debounce(func, timeout = 500) {
     
 //     let timer;
 //     return (...args) => {
 //         clearInterval(timer);
 //         timer = setTimeout(() => {
-//             func.apply(this, args);
+//             func.call(this, args);
 //         }, timeout)
 //     }
 //   }
@@ -86,6 +86,18 @@
 //   const processChange = debounce(() => test());
 
 //Throttle
+// const throttle = (func, limit) => {
+//     let throttleFlag;
+//     return (...args) => {
+//         if(!throttleFlag) {
+//             func.apply(this, args);
+//             throttleFlag = true;
+//             setTimeout(() => {
+//                 throttleFlag = false
+//             }, limit)
+//         }
+//     }
+// } DOM is a programmatic interface
 // const throttle = (func, limit) => {
 //     let throttleFlag;
 //     return (...args) => {
@@ -105,4 +117,8 @@
 // text.addEventListener("input", e => {
 //     console.log(text.value);
 //     console.log(text.getAttribute('value'))
-// })
+// });
+async function func() {
+  await 10;
+}
+console.log(func());

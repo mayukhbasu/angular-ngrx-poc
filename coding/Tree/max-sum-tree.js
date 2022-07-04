@@ -11,11 +11,6 @@ const maxPathSum = (root) => {
     if(root.left === null && root.right === null) return root.val;
     const maxChildSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
     return root.val + maxChildSum;
-    // if(root === null) return -Infinity;
-    // if(root.left === null && root.right === null) return root.val;
-    // const maxChildSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
-    // return root.val + maxChildSum;
-    
 }
 
 const a = new Node(3);
@@ -38,3 +33,8 @@ c.right = f;
 
 maxPathSum(a); // -> 18
 console.log(maxPathSum(a));
+
+// if(root === null) return -Infinity;
+    // if(root.left === null && root.right === null) return root.val;
+    // const maxChildSum = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+    // return root.val + maxChildSum;

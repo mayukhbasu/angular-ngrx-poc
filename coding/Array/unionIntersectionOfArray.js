@@ -61,5 +61,5 @@ function findUnion(arr1, arr2) {
 
 var arr1 = [ 1, 2, 2, 2, 3 ];
  var arr2 = [ 2, 3, 4, 5 ];
-//findIntersection(arr1, arr2);
+indIntersection(arr1, arr2);
 findUnion(arr1, arr2);

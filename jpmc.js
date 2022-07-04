@@ -19,9 +19,11 @@
 // var object1 = new (function(){
 //     this.name = "Mayukh"
 // })();
+
 // object1.name = "Test";
 // let newObject = object1;
-// console.log(newObject.name)
+// console.log(newObject.name);
+
 
 // What is the difference between Call, Apply and Bind
 // var employee1 = { firstName: "John", lastName: "Rodson" };
@@ -49,13 +51,16 @@
 //   myFunction.apply(myObj1, ["Jin", "Hei"]);
 //   myFunction.apply(myObj2, ["Jin", "Hei"]);
   //myFunction.bind(myObj2)("Jin", "Hei");
+// const f1 = (value) => {
+  
+// }
 
 //   What is the purpose of the array slice, splice method
-//   let arrayIntegers = [1, 2, 3, 4, 5];
-//   let arrayIntegers1 = arrayIntegers.slice(1, 2);
-//   let arrayIntegers2 = arrayIntegers.splice(1, 2);
-//   console.log(arrayIntegers)
-//   console.log(arrayIntegers2);
+  // let arrayIntegers = [1, 2, 3, 4, 5];
+  // let arrayIntegers1 = arrayIntegers.slice(1, 2);
+  // let arrayIntegers2 = arrayIntegers.splice(1, 2);
+  // console.log(arrayIntegers)
+  // console.log(arrayIntegers2);
 
 //What is a first order function
 //const firstOrder = () => console.log("I am a first order function!");
@@ -86,6 +91,13 @@
 // }
 
 // console.log(add(1,2,3));
+// const pure = (a, b) => a + b;
+// let value = 0;
+// const impure = (a,b) => {
+//   value = 1;
+//   return a + b + value
+// }
+// console.log(impure(2,3))
 
 // What is the difference between let and var
 // function userDetails(name){
@@ -135,7 +147,7 @@
 // outerFunction(callbackFunction)
 
 // what is promise chaining
-
+// A promise is a javascript object that links producing and consuming code
 // new Promise((resolve, reject) => {
 //     resolve(2)
 // }).then(value => {
@@ -145,6 +157,7 @@
 //     console.log(value);
 //     return value + 5
 // }).then(value => console.log(value));
+
 
 // JavaScript Demo: Promise.all()
 // const promise1 = Promise.resolve(3);
@@ -193,9 +206,9 @@
 //Host Objects -> Provided by browser environment(window, document, location, history)
 
 // How do you test for an empty object
-const obj = {
+// const obj = {
     
-}
+// }
 //console.log(Object.entries(obj).length === 0 && obj.constructor === Object);
 // function Tree(name) {
 //     this.name = name
@@ -205,6 +218,7 @@ const obj = {
 //   console.log(theTree.constructor)
 // let o = {}
 // console.log(o.constructor === Object) // true
+
 
 // let o = new Object
 // o.constructor === Object // true
@@ -314,11 +328,13 @@ const obj = {
 // console.log(myCat.breed);
 // console.log(myCat.__proto__);
 // function test(){
-
 // }
 // test.prototype.prop = "hello";
 // let t = new test();
 // console.log(t.__proto__);
+// function test(){
+//   this.name = "mayukh"
+// }
 // console.log(test.prototype);
 
 //What is a freeze method
@@ -344,12 +360,9 @@ const obj = {
 //   console.log(obj.prop);
   // expected output: 42
 
-//   What is a rest parameter
+//   What is a rest parameter -> putting back the squares that is making an array
   
-// const values = (value1,...nums, c1) => {
-//     console.log(nums);
-// }
-// values(1,2,3,4)
+
 //What is a spread operator
 
 // How do you determine whether object is frozen or not
@@ -381,10 +394,7 @@ const obj = {
 // console.log(proxy1);
 
 //What is the main difference between Object.values and Object.entries method
-// const object = {
-//     a: "Good morning",
-//     b: 100,
-//   };
+
   //console.log(Object.entries(object));
   // for (let value of Object.values(object)) {
   //   console.log(`${value}`); // 'Good morning'
@@ -392,9 +402,6 @@ const obj = {
   // }
 //Weakmap
 
-// const obj1 = {name: "test"};
-// const obj2 = {name: "minnie"};
-// let wmap = new WeakMap();
 // wmap.set(obj1, "max")
 // wmap.set(obj2, "newtest");
 // // for(let [key, value] of wmap){
@@ -421,14 +428,12 @@ const obj = {
 //     }
 // }
 
-// console.log(user.name);
-// user.name = "Minjie";
-// console.log(user.name);
 
 //How do you define property on Object constructor
 // "use strict"
 
 // const newObj = {};
+
 // Object.defineProperty(newObj, "newProp", {
 //     value: 100,
 //     writable: false
@@ -452,6 +457,7 @@ const obj = {
 // console.log(iterator.next())
 // console.log(iterator.next())
 // console.log(iterator.next())
+// console.log(iterator.next())
 
 //understanding-javascript-decorators
 // const logger = (message) => console.log(message)
@@ -461,13 +467,21 @@ const obj = {
 //         console.log("message logged at:", new Date().toLocaleString())
 //     }
 // }
+// const f1 = (test) => {
+//   return (message) => {
+//     return message.concat(test);
+//   }
+// }
+
+// const test = f1("abc")("def");
+// console.log(test);
 
 // const decoratedLogger = loggerDecorator(logger);
 //How do you check whether an object can be extendable or not
 // const newObject = {name: "Mayukh"};
 // Object.freeze(newObject)
 // console.log(Object.isExtensible(newObject)); //true
-const newObject = {};
+//const newObject = {};
 
 // Object.defineProperties(newObject, {
 //   newProperty1: {
@@ -511,14 +525,17 @@ const newObject = {};
 // };
 
 // const descriptorObject = Object.getOwnPropertyDescriptors(newObject);
+// console.log(descriptorObject);
 // console.log(descriptorObject.a.writable);
 
 //How do you compare scalar arrays
+
 // const arrayFirst = [1, 2, 3, 4, 5];
 // const arraySecond = [1, 2, 3, 4, 5];
 // console.log(arrayFirst.length === arraySecond.length)
 // console.log(arrayFirst.length === arraySecond.length &&
 //   arrayFirst.every((value, index) => value === arraySecond[index]))
+
 
 //How to get the value from get parameters
 // let urlString = "http://www.some-domain.com/about.html?x=1&y=2&z=3";
@@ -559,8 +576,8 @@ const newObject = {};
 // console.log(circle.perimeter());
 
 //What happens if we add two arrays
-// console.log(["a"] + ["b"]); // "ab"
-// console.log([] + []); // ""
+//  console.log(["a"] + ["b"]); // "ab"
+//  console.log([] + []); // ""
 // console.log(![] + []); // "false", because ![] returns false.
 
 //What is the output of prepend additive operator on falsy values
@@ -578,6 +595,7 @@ const newObject = {};
 
 //How do you get unique values of an array
 //console.log([...new Set([1, 2, 4, 4, 3])]); // [1, 2, 4, 3]
+//console.log([...new Set([1,2,2,3,3,4,5])])
 
 //How do you map the array values without using map method
 // const countries = [
@@ -588,9 +606,11 @@ const newObject = {};
 //   { name: "China", capital: "Beijing" },
 //   { name: "France", capital: "Paris" },
 // ];
+
 // const cityNames = Array.from(countries, (country) => country.capital)
+
 // //const cityNames = Array.from(countries, (country) => country.capital);
-// console.log(cityNames);
+ 
 
 //How do you empty an array
 // let cities = ["Singapore", "Delhi", "London"];
@@ -599,7 +619,7 @@ const newObject = {};
 //What is the easiest way to convert an array to an object
 // var fruits = ["banana", "apple", "orange", "watermelon"];
 // var fruitsObject = { ...fruits };
-// console.log(fruitsObject["0"]);
+// console.log(fruitsObject);
 
 //How do you verify that an argument is a Number or not
 // function isNumber(n) {
@@ -616,12 +636,13 @@ const newObject = {};
 // let primitive = 30;
 // let nonPrimitive = {}
 // function isPrimitive(val){
-//   return Object(val) !== val;
+//   return Object(val) !== val
 // }
 // console.log(isPrimitive(primitive));
 // console.log(isPrimitive(nonPrimitive));
 
 //How do you make an object iterable in javascript
+
 // const collection = {
 //   one: 1,
 //   two: 2,
@@ -645,8 +666,11 @@ const newObject = {};
 //How do you check an object is a promise or not
 
 // function isPromise(value) {
-//   return Boolean(value && typeof value.then === "constructor");
+//   return Boolean(value && typeof value.then === "function")
   
+// }
+// function isPromise(value) {
+//   return Boolean(value && typeof value.then === "function");
 // }
 // let i = 1;
 // var promise = new Promise(function (resolve, reject) {
@@ -690,6 +714,7 @@ const newObject = {};
 //the right side if true will be printed
 
 //Reverse an Array using reduce method
+
 // const originalArray = [1, 2, 3, 4, 5];
 // const newArray = originalArray.reduce((acc, value) => [value, ...acc],[]);
 // console.log(newArray);
@@ -730,11 +755,13 @@ const newObject = {};
 //   console.log("C");
 // }
 // main();
+
 // var y = 1;
 // if (function f() {}) {
 //   y += typeof f;
 // }
 // console.log(y);
+
 // let x = function test(){};
 // console.log( !!x);
 
@@ -791,9 +818,9 @@ const newObject = {};
 // console.log(10 == [[[[[[[10]]]]]]]);
 
 // console.log(10 + "10");
-// console.log(10 - "10");
+//console.log(10 - "10");
 
-// console.log([0] == false);
+ //console.log([0] == false);
 // if ([0]) {
 //   console.log("I'm True");
 // } else {
@@ -825,23 +852,205 @@ const newObject = {};
 //   return Promise.resolve(10);
 // }
 
-async function func() {
-  await 10;
+// async function func() {
+//   await 10;
+// }
+// func().then(data => console.log(data));
+
+
+// function delay() {
+//   return new Promise(resolve => setTimeout(resolve, 2000));
+// }
+
+// async function delayedLog(item) {
+//   await delay();
+//   console.log(item);
+// }
+
+// async function processArray(array) {
+//   array.forEach(item => {
+//     await delayedLog(item);
+//   })
+// }
+
+// processArray([1, 2, 3, 4]);
+
+// function delay() {
+//   return new Promise((resolve) => setTimeout(resolve, 2000));
+// }
+
+// async function delayedLog(item) {
+//   await delay();
+//   console.log(item);
+// }
+
+// async function process(array) {
+//   array.forEach(async (item) => {
+//     await delayedLog(item);
+//   });
+//   console.log("Process completed!");
+// }
+// process([1, 2, 3, 5]);
+
+// var set = new Set();
+// set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
+// console.log(set);
+
+// const sym1 = Symbol("one");
+// const sym2 = Symbol("one");
+
+// const sym3 = Symbol.for("two");
+// const sym4 = Symbol.for("two");
+// console.log(sym1 === sym2, sym3 === sym4)
+
+// const sym1 =  Symbol("one");
+// console.log(sym1);
+// let myNumber = 100;
+// let myString = "100";
+
+// if (!typeof myNumber === "string") {
+//   console.log("It is not a string!");
+// } else {
+//   console.log("It is a string!");
+// }
+
+// if (!typeof myString === "number") {
+//   console.log("It is not a number!");
+// } else {
+//   console.log("It is a number!");
+// }
+
+// console.log(
+//   JSON.stringify({ myArray: ["one", undefined, function () {}, Symbol("")] })
+// );
+// console.log(
+//   JSON.stringify({ [Symbol.for("one")]: "one" }, [Symbol.for("one")])
+// );
+
+//console.log(JSON.stringify({person: [undefined, undefined]}))
+
+// class A {
+//   constructor() {
+//     console.log(new.target.name);
+//   }
+// }
+
+// class B extends A {
+//   constructor() {
+//     super();
+//   }
+// }
+
+// new A();
+// new B();
+
+// const { a: x = 10, b: y = 20 } = { a: 30 };
+
+// console.log(x);
+// console.log(y);
+
+
+// function area({ length = 10, width = 20 }) {
+//   console.log(length * width);
+// }
+
+// area({});
+// const props = [
+//   { id: 1, name: "John" },
+//   { id: 2, name: "Jack" },
+//   { id: 3, name: "Tom" },
+// ];
+
+// const [{id}, , { name }] = props;
+// console.log(id);
+
+// function checkType(num = 1) {
+//   console.log(typeof num);
+// }
+
+// checkType();
+// checkType(undefined);
+// checkType("");
+// checkType(null);
+
+// function add(item, items = []) {
+//   items.push(item);
+//   return items;
+// }
+
+// console.log(add("Orange"));
+// console.log(add("Apple"));
+
+// function greet(greeting, name, message = greeting + " " + name) {
+//   console.log([greeting, name, message]);
+// }
+
+// greet("Hello", "John");
+// greet("Hello", "John", "Good morning!");
+
+// function outer(f = inner()) {
+//   function inner() {
+//     return "Inner";
+//   }
+// }
+// outer();
+
+// function myFun(x, y, ...manyMoreArgs) {
+//   console.log(manyMoreArgs);
+// }
+
+// myFun(1, 2, 3, 4, 5);
+// myFun(1, 2);
+
+// const obj1 = { key: "value" };
+// const array = [...obj1];
+// console.log(array);
+
+
+
+
+
+
+// console.log(String.prototype.trimLeft.name === "trimLeft");
+// console.log(String.prototype.trimLeft.name === "trimStart");
+
+// console.log(Math.max());
+// async function func() {
+//   return 10;
+// }
+// console.log(func());
+// async function func() {
+//   await 10;
+// }
+// console.log(func());
+// const sym1 = Symbol("one");
+// console.log(sym1);
+// let myNumber = 100;
+// let myString = "100";
+
+// if (!typeof myNumber === "string") {
+//   console.log("It is not a string!");
+// } else {
+//   console.log("It is a string!");
+// }
+
+// if (!typeof myString === "number") {
+//   console.log("It is not a number!");
+// } else {
+//   console.log("It is a number!");
+//}
+//console.log(JSON.stringify({undefined}));
+// const obj = { key: "value" };
+// const array = [...obj];
+// console.log(array);
+
+function* myGenFunc() {
+  yield 1;
+  yield 2;
+  yield 3;
 }
-func().then(data => console.log(data));
-
-
-
-
-
-
-
-
-
-
-
-
-
+var myGenObj =  myGenFunc();
+console.log(myGenObj.next().value);
 
 
 

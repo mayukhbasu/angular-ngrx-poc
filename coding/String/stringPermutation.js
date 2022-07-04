@@ -1,28 +1,24 @@
 function permute(s , answer)
 { 
-    if(s.length === 0) console.log(answer);
-    for(let i = 0; i < s.length; i++) {
-        let ch = s[i];
-        let left = s.slice(0, i);
-        let right = s.slice(i + 1);
-        let total = left + right;
-        permute(total, ch + answer);
-    }
+   
     // if(s.length === 0) console.log(answer);
     // for(let i = 0; i < s.length; i++) {
     //     let ch = s[i];
     //     let left = s.slice(0, i);
     //     let right = s.slice(i + 1);
     //     let total = left + right;
-    //     permute(total, answer + ch);
+    //     permute(total, ch + answer);
     // }
+    
 }
  
     // Driver Cod"e
-    let s= "abc";
-    let answer="";
+    // let s= "abc";
+    // let answer="";
       
-    console.log("Enter the string  : ");
+    // console.log("Enter the string  : ");
       
-    console.log("\nAll possible string are : ");
+    // console.log("\nAll possible string are : ");
+    let s = "abc";
+    let answer = "";
     permute(s, answer);

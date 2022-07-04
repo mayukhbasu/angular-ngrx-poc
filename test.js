@@ -73,8 +73,8 @@
 //     age: 30,
 //     isAdmin: true
 //   };
-//   for(let key of Object.entries(user1)){
-//       console.log(key)
+//   for(let [key, value] of Object.entries(user1)){
+//       console.log(key+ " "+value)
 //   }
 
 
@@ -155,12 +155,19 @@
 //       let arrow = () => {
 //         console.log(this.firstName);
 //       }
-//       arrow();
+//        arrow();
 //       return 2
 //     }
     
 //   };
-//   console.log(user.sayHi())
+//   console.log(user.sayHi());
+// let user = {
+//   firstName: 'Mayukh',
+//   sayHi(){
+//     console.log(this.firstName);
+//   }
+// }
+// user.sayHi()
 
 
 // function makeUser() {
@@ -174,17 +181,7 @@
   
 //   console.log( user.ref.name ); 
 
-// function makeUser(){
-//     return {
-//         name: "Max",
-//         ref(){
-//             return this
-//         }
-//     }
-// }
 
-// let user = makeUser();
-// console.log(user.ref().name);
 
 // let ladder = {
 //     step: 0,
@@ -278,7 +275,7 @@
 //   [id]: 123
 // };
 
-// //for (let key in user) console.log(key); 
+// for (let key in user) console.log(key); 
 // console.log(user[id]);
 
 
@@ -306,9 +303,11 @@
 // str.test = 5;
 
 // console.log(str.test);
+
 //  let num = 255;
 //  console.log(num.toString(16));
 //console.log( 9999999999999999 ); 
+
 //console.log(isNaN(NaN));
 //console.log(isFinite(Infinity));
 //console.log(parseInt('12.5.2.2px'));
@@ -336,7 +335,8 @@
 // let arr = ["t", "e", "s", "t"];
 // console.log(arr.slice(-2));
 // let arr = [1, 2];
-
+// let test = {...arr}; //convert array into object
+// console.log(test);
 //   let arrayLike = {
 //     0: "something",
 //     1: "else",
@@ -366,12 +366,17 @@
 // let arr = [];
 // arr.reduce((sum, current) => sum + current);
 // console.log(arr);
-//  camelize("-webkit-transition")
+ 
 // function camelize(str){
 //     let strArray = str.split("-");
-//     let result = strArray.map((word, index) => index == 0? word : word[0].toUpperCase() + word.slice(1)).join('');
+//     let result = strArray.map((word, index) => 
+//     index == 0? word : word[0].toUpperCase() + word.slice(1)).join('');
+    
 //     console.log(result);
 // }
+
+// camelize("-webkit-transition");
+
 // const functionInRange = (arr, a ,b) => {
 //     for(let i = 0; i < arr.length ; i++){
 //         let val = arr[i];
@@ -391,11 +396,19 @@
 // console.log(arr);
 // console.log(arr);
 // console.log(arr);
+
 // let users = [
 //     {id: 'john', name: "John Smith", age: 20},
 //     {id: 'ann', name: "Ann Smith", age: 24},
 //     {id: 'pete', name: "Pete Peterson", age: 31},
 //   ];
+//   function groupByID(arr) {
+//     return arr.reduce((acc, value) => {
+//       acc[value.name] = value;
+//       return acc;
+//     }, {})
+//   }
+//   console.log(groupByID(users));
 //   function groupById(array){
 //       return array.reduce((obj, current) => {
 //         obj[current.age] = current;
@@ -411,7 +424,7 @@
   // let usersById = groupById(users);
   // console.log(usersById)
 
-// let map = new Map();
+//  let map = new Map();
 
 // map.set('1', 'str1');   // a string key
 // map.set(1, 'num1');     // a numeric key
@@ -428,26 +441,27 @@
 // console.log(prices);
 let set = new Set();
 let john = { name: "John" };
+let john2 = {name: "John"}
 let pete = { name: "Pete" };
 let mary = { name: "Mary" };
 set.add(john);
 set.add(pete);
-set.delete(john);
+set.add(john2);
 console.log(set);
 
 
-// function aclean(arr) {
-//     let map = new Map();
-//     for(let word of arr){
-//         let sorted = word.toLowerCase().split('').sort().join('');
-//         map.set(sorted, word);
-//     }
-//     return Array.from(map.values())
+// const removeAnagram = (arr) => {
+//   let map = new Map();
+//   for(let word of arr) {
+//     let sorted = word.split('').sort().join('');
+//     map.set(sorted, word);
+//   }
+//   return Array.from(map.values());
+  
 // }
-  
-//   let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
-  
-//   console.log( aclean(arr) );
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// console.log(removeAnagram(arr))
+
 // const removeAnagram = (arr) => {
 //     let map = new Map();
 //     for(let i = 0; i < arr.length ; i++){
@@ -457,7 +471,7 @@ console.log(set);
 //     return map.values();
 // }
 // let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
-// console.log( removeAnagram(arr) );
+// console.log(removeAnagram(arr));
 // let map = new Map();
 
 // map.set("name", "John");
@@ -486,7 +500,7 @@ console.log(set);
 // }
 
 // let {name, ...rest} = obj;
-// console.log(rest);
+//  console.log(rest);
 // let list = {
 //     value: 1,
 //     next: {

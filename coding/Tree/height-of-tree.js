@@ -7,9 +7,11 @@ class Node {
 }
 const height = (node) => {
     if(node === null) return - 1;
-    leftHeight = height(node.left);
-    rightHeight = height(node.right);
-    return 1 + Math.max(leftHeight, rightHeight);
+    return 1 + Math.max(height(node.left), height(node.right));
+    // if(node === null) return - 1;
+    // leftHeight = height(node.left);
+    // rightHeight = height(node.right);
+    // return 1 + Math.max(leftHeight, rightHeight);
 }
 const a = new Node(3);
 const b = new Node(11);

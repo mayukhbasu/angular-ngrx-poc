@@ -1,37 +1,41 @@
-// const sym1 = Symbol("cat");
-// const sym2 = Symbol("cat");
-// //console.log(sym1 === sym2);
-// const idSym = Symbol('id');
-// let user = {
-//     id: 1,
-//     name: "Mayukh",
-//     [idSym]: "111"
+//Symbols are new primitive type , it is unique and cannot be changed,
+//Its main motivation is to provide private variable that does not conflict with the name
+// const value1 = Symbol('hello');
+// const value2 = Symbol('hello');
+
+// console.log(value1 === value2);
+//Even though symbols having same value they are different
+
+//Creating symbol
+// const x = Symbol();
+// console.log(typeof x);
+
+// const x = Symbol("Tekken")
+// console.log(x);
+
+//Access Symbol Description
+// const x = Symbol('hey');
+// console.log(x.description); 
+
+//Symbols are not included in for...in
+// let id = Symbol("id");
+// let person = {
+//     name: "Jack",
+//     [id]: 1
 // }
 
-const { Content } = require("@angular/compiler/src/render3/r3_ast");
+// for(let key in person){
+//     console.log(key)
+// }
+// console.log(person);
 
+let person = {
+    name: "Jack"
+};
 
+let id = Symbol("id");
 
-//console.log(Object.getOwnPropertySymbols(user));
-// const sym1 = Symbol.for('cat');
-// const sym2 = Symbol.for('cat');
-// console.log(sym1 === sym2);
-const RED = Symbol('red');
-const BLUE = Symbol('blue');
-
-function getLevel(color) {
-    switch(color){
-        case RED:
-            return "Mayukh"
-        case BLUE:
-            return "Mayukh"
-    }
-
-}
-console.log(getLevel(blue))
-
-// 1. Change Detection
-// 2. redux
-// 3. View and Content
-// 4. View Child/ContentChild
-// 5. PWA/Microfrontend
+person[id] = "Another value";
+console.log(person);
+person.id = 12;
+console.log(person);
