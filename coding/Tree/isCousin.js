@@ -17,6 +17,22 @@ const isSibling = (root, sib1, sib2) => {
     )
 }
 
+const findLevel = (root, target, level) => {
+    if(root === null) return 0;
+    if(root.data === target.data) return level;
+    let downLevel = findLevel(root.left, target, level + 1);
+    if(downLevel !== 0) return downLevel;
+    downLevel = findLevel(root.right, target, level + 1);
+    return downLevel;
+}
+
+const isCousin = (root, node1, node2) => {
+    return (
+        findLevel(root, node1, 0) === findLevel(root, node2, 0)
+        && !isSibling(root, node1, node2)
+    )
+}
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
@@ -35,4 +51,4 @@ c.right = f;
 //  / \      \
 // 4   -2     1
 
-console.log(isSibling(a, b , c));
+console.log(isCousin(a, e , f))

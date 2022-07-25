@@ -118,7 +118,13 @@
 //     console.log(text.value);
 //     console.log(text.getAttribute('value'))
 // });
-async function func() {
-  await 10;
-}
-console.log(func());
+// async function func() {
+//   await 10;
+// }
+// console.log(func());
+// "use strict";
+// const a = {
+//   test: 1
+// };
+// Object.seal(a);
+// a.test1 = 2;

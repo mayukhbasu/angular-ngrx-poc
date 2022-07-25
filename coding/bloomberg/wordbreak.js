@@ -1,49 +1,50 @@
-var wordBreak = function(s, wordDict) {
-    const dp = Array(s.length);
-    var map = {};
-    for(let word of wordDict){
-        map[word] = true;
+var wordBreak = function(s = '', wordDict, cache = new Map()) {
+    if(cache.has(s)) return cache.get(s);
+    if(s.length === 0) {
+        cache.set(s, []);
+        return [];
     }
-    return find(s, map, dp, 0);
-  };
-  
-  var find = function (s, map, dp, index) {
-    let str = '';
-    let temp = null;
-    dp[index] = [];
-    for(let i = index; i < s.length; i++) {
-        str = s.substring(index , i+1);
-        if(!map[str]) continue;
-        if(i === s.length - 1){
-            dp[index].push(str);
-            break;
-        }
-        temp = find(s, map, dp, i + 1);
-        for(let j = 0; j < temp.length; j++) {
-            dp[index].push(str +' '+temp[j]);
+    const result = [];
+    for(let word of wordDict) {
+        if(s.startsWith(word)) {
+            const newStr = s.slice(word.length);
+            const values = wordBreak(newStr, wordDict, cache);
+            if(values.length === 0 && newStr.length === 0) result.push(word);
+            else {
+                values.forEach(val => {
+                    result.push(word +' '+val);
+                })
+            }
         }
     }
-    return dp[index];
-    // let str = '';
-    // let temp = null;
-    // dp[index] = [];
-    // for(let i = index; i < s.length; i++) {
-    //     str = s.substring(index, i+1);
-    //     if(!map[str]) continue;
-    //     if(i === s.length - 1) {
-    //         dp[index].push(str);
-    //         break;
-    //     }
-    //     temp = find(s, map, dp, i + 1);
-    //     for(let j = 0; j < temp.length; j++) {
-    //         dp[index].push(str+' '+temp[j]);
+    cache.set(s, result);
+    return result;
+    // if(cache.has(s))
+    //     return cache.get(s);
+    
+    // if(s.length === 0){
+    //     cache.set(s, []);
+    //     return [];
+    // }
+    
+    // const result = [];
+    // for(let word of wordDict){
+    //     const index = s.indexOf(word);
+    //     if(index === 0){
+    //         const newStr = s.slice(word.length);
+    //         const values = wordBreak(newStr, wordDict, cache);
+    //         if(values.length === 0 && newStr.length === 0)
+    //             result.push(word);
+    //         else{
+    //             values.forEach(val => {
+    //                 result.push(word + ' ' + val);
+    //             });
+    //         }
     //     }
     // }
-    // return dp[index];
     
-  };
-
-  let s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"];
-  console.log(wordBreak(s, wordDict));
-
-  
+    // cache.set(s, result);
+    // return result;
+};
+s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"];
+console.log(wordBreak(s, wordDict));

@@ -8,7 +8,7 @@ function partition(arr, low , high) {
         }
     }
     [arr[high], arr[pivotLocation]] = [arr[pivotLocation], arr[high]];
-    return pivotLocation;
+    return pivotLocation
     // let pivot = arr[high];
     // let pivotLocation = low;
     // for(let i = low; i <= high; i++){
@@ -22,10 +22,11 @@ function partition(arr, low , high) {
 }
 
 function findkthElement(arr, low, high, k) {
-    let index = partition(arr, low, high);
+    const index = partition(arr, low, high);
     if(index === k - 1) return arr[index];
-    if(index > k - 1) return findkthElement(arr, low, index - 1);
-    if(index < k - 1) return findkthElement(arr, index+ 1, high);
+    if(index > k - 1) {
+        return findkthElement(arr, low, index - 1, k);
+    }
     // const index = partition(arr, low, high);
     // if(index === k - 1) {
     //     return arr[index];

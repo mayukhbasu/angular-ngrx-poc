@@ -67,7 +67,6 @@
 //   for(let code in codes){
 //       console.log(code);
 //    }
-
 // let user1 = {
 //     name: "John",
 //     age: 30,
@@ -113,9 +112,7 @@
 // console.log(user);
 
 
-// let user = { name: "John" };
-// Object.assign(user, {name: "King"});
-// console.log(user);
+// cons
 
 
 // let user = {
@@ -161,6 +158,7 @@
     
 //   };
 //   console.log(user.sayHi());
+
 // let user = {
 //   firstName: 'Mayukh',
 //   sayHi(){
@@ -267,7 +265,10 @@
 // };
 // let id = Symbol("id");
 // user[id] = "Mayukh";
+// user.id = 2
 // console.log(user[id]);
+
+
 // let id = Symbol("id");
 // let user = {
 //   name: "John",
@@ -439,15 +440,15 @@
 // ]);
 
 // console.log(prices);
-let set = new Set();
-let john = { name: "John" };
-let john2 = {name: "John"}
-let pete = { name: "Pete" };
-let mary = { name: "Mary" };
-set.add(john);
-set.add(pete);
-set.add(john2);
-console.log(set);
+// let set = new Set();
+// let john = { name: "John" };
+// let john2 = {name: "John"}
+// let pete = { name: "Pete" };
+// let mary = { name: "Mary" };
+// set.add(john);
+// set.add(pete);
+// set.add(john2);
+// console.log(set);
 
 
 // const removeAnagram = (arr) => {
@@ -709,3 +710,15 @@ console.log(set);
 // }
 
 // console.log(explore(20));
+// let x1 = [['a', 'b', 'c']];
+// let x2 = [['d', 'e']];
+// let test = [];
+// test.push([5, ...[1,2]]);
+// console.log(...test);
+// const arr = [[4, 6], [6, 8], [7, 9], [4, 8], [0, 3, 9], [], [0, 1, 7], [2, 6], [1, 3], [2, 6]];
+// const mem = Array(10).fill([]).map(() => Array(2).fill(0));
+// for(let i = 0; i < arr.length; i++) {
+//   mem[i][1] = arr[i].length;
+// }
+// console.log(mem);
+console.log( true + false)

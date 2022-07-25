@@ -181,7 +181,7 @@
 // What is the purpose of double exclamation
 // console.log(!!null);
 // console.log(!!undefined);
-// console.log(!!-1);
+// console.log(!!-0);
 
 // What is the purpose of the delete operator
 // const test = {name: "Mayukh", age: 33};
@@ -438,6 +438,7 @@
 //     value: 100,
 //     writable: false
 // });
+
 // newObj.newProp = 900
 // console.log(newObj.newProp);
 // var obj = { counter: 0 };
@@ -628,8 +629,9 @@
 
 //How do you flattening multi dimensional arrays
 // const biDimensionalArr = [11, [22, 33], [44, 55], [66, 77], 88, 99];
-// const flattenArr = [].concat(...biDimensionalArr)
-// console.log(flattenArr);
+// const flattenArr = [].concat(...biDimensionalArr);
+// console.log(...biDimensionalArr);
+//console.log(flattenArr);
 
 //How do you detect primitive or non primitive value type
 
@@ -706,7 +708,7 @@
 // console.log(sum(1,2,3,4,5))
 
 //What is nullish coalescing operator (??)?
-// console.log(false ?? null); // true
+ //console.log(null ?? false); // true
 // console.log(false ?? true); // false
 // console.log(undefined ?? true); // true
 
@@ -820,7 +822,7 @@
 // console.log(10 + "10");
 //console.log(10 - "10");
 
- //console.log([0] == false);
+//  console.log([0] == false);
 // if ([0]) {
 //   console.log("I'm True");
 // } else {
@@ -853,9 +855,9 @@
 // }
 
 // async function func() {
-//   await 10;
+//   return 10;
 // }
-// func().then(data => console.log(data));
+//func().then(data => console.log(data));
 
 
 // function delay() {
@@ -868,7 +870,7 @@
 // }
 
 // async function processArray(array) {
-//   array.forEach(item => {
+//   array.forEach(async item => {
 //     await delayedLog(item);
 //   })
 // }
@@ -892,9 +894,9 @@
 // }
 // process([1, 2, 3, 5]);
 
-// var set = new Set();
-// set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
-// console.log(set);
+var set = new Set();
+set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
+console.log(set);
 
 // const sym1 = Symbol("one");
 // const sym2 = Symbol("one");
@@ -1044,13 +1046,26 @@
 // const array = [...obj];
 // console.log(array);
 
-function* myGenFunc() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-var myGenObj =  myGenFunc();
-console.log(myGenObj.next().value);
+// function* myGenFunc() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// }
+// var myGenObj =  myGenFunc();
+// console.log(myGenObj.next().value);
+
+// function *generator(i) {
+//   yield i;
+//   yield i + 10;
+//   return 5;
+//   yield 9;
+// }
+
+// const gen = generator(10);
+// console.log(gen.next());
+// console.log(gen.next());
+// console.log(gen.next());
+// console.log(gen.next());
 
 
 
