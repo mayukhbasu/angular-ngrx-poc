@@ -11,3 +11,4 @@ OrderedStream.prototype.insert = function(idKey, value) {
     }
     return result;
 }
+//Position was incremented before

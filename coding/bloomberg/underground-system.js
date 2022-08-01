@@ -36,4 +36,5 @@ class UndergroundSystem {
     //     const {sum , count} = this.avg.get(`${startStation}-${endStation}`) ?? {sum: 0, count: 0};
     //     return sum/count;
     // }
+  //While practicing forgot about the checkout method where we needed to calculate the sum and count and using the nullish operator
 }
