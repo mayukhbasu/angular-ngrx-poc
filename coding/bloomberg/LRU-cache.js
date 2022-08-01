@@ -1,4 +1,23 @@
 class LRUCache {
+    // constructor(capacity) {
+    //     this.capcity = capacity;
+    //     this.map = new Map();
+    // }
+    // get(key) {
+    //     if(!this.map.has(key)) return -1;
+    //     const value = this.map.get(key);
+    //     this.map.delete(key, value);
+    //     this.map.set(key, value);
+    //     return this.map.get(key);
+    // }
+    // put(key, value) {
+    //     if(this.map.get(key) === -1) {
+    //         if(this.capcity === this.map.size) {
+    //             this.map.delete(this.map.keys().next().value);
+    //         }
+    //     }
+    //     this.map.set(key, value);
+    // }
     constructor(capacity) {
         this.capacity = capacity;
         this.map = new Map();

@@ -1,5 +1,6 @@
  
-const isOutOfBound = (board, row, col) => row < 0 || row >= board.length || col < 0 || col >= board[0].length;
+const isOutOfBound = (board, row, col) => row < 0 || row >= board.length 
+|| col < 0 || col >= board[0].length;
 const checkNeighbors = (board, word, row, col) => {
     if (!word.length) return true;
     if (isOutOfBound(board, row, col) || board[row][col] !== word[0]) return false;
@@ -9,6 +10,8 @@ const checkNeighbors = (board, word, row, col) => {
     const newWord = word.substr(1);
 
     board[row][col] = 0; // Disable the current character
+    //The reason is during backtracking we may run into cells that points to the current 
+    //cell and the results will be wrong, in order to avoid that we disable the current cell
     
     // Check if neighbors are fruitful
     const results = checkNeighbors(board, newWord, row + 1, col) ||
