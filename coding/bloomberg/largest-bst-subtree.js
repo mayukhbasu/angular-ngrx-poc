@@ -6,53 +6,21 @@ class Node {
     }
   }
 
-var largestBSTSubtree = function(root) {
-    let max = 0;
-    const dfs = (node) => {
-        if(!node) return [0 , null, null];
-        if(!node.left && !node.right) {
-            max = Math.max(max , 1);
-            return [1, node.val, node.val];
-        }
-        let [leftCount, leftMin, leftMax] = dfs(node.left);
-        let [rightCount, rightMin, rightMax] = dfs(node.right);
-        leftMax = leftMax !== null ? leftMax : -Infinity
-        rightMin = rightMin !== null ? rightMin : Infinity;
-        if(node.val > leftMax && node.val < rightMin && leftCount && rightCount) {
-            leftMin = leftMin !== null ? leftMin : node.val;
-            rightMax = rightMax !== null ? rightMax : node.val;
-            let count = 1 + leftCount + rightCount;
-            max = Math.max(max , count);
-            return [count, leftMin, rightMax];
-        } else return [false, null, null];
-    }
-    dfs(root);
-    return max;
+const largestBSTSubtree = (root) => {
+    const result = findLargest(root);
+    return result[1];
+}
 
-    // let max = 0;
-    // const dfs = (node) => {
-        
-    //     if (!node) return [0,null,null];
-    //     if (!node.left && !node.right) {
-    //         max = Math.max(max, 1);
-    //         return [1, node.val, node.val];
-    //     }
-    //     let [left, leftMin, leftMax] = dfs(node.left);
-    //     let [right, rightMin, rightMax] = dfs(node.right);
-    //     leftMax = leftMax !== null ? leftMax : -Infinity;
-    //     rightMin = rightMin !== null ? rightMin : Infinity;
-    //     if (node.val > leftMax && node.val < rightMin && left !== false && right !== false) {
-    //         let count = left + right + 1;
-    //         max = Math.max(count, max);
-    //         leftMin = leftMin !== null ? leftMin : node.val;
-    //         rightMax = rightMax !== null ? rightMax : node.val;
-    //         return [count, leftMin, rightMax];
-    //     } else return [false,null,null];
-    // }
-    // dfs(root);
-    // return max;
-};
-
+const findLargest = (node) => {
+    if(!node) return [true, 0, Infinity, -Infinity];
+    const [isBSTLeft, sizeLeft, lowerBoundLeft, upperBoundLeft] = findLargest(node.left);
+    const [isBSTRight, sizeRight, lowerBoundRight, upperBoundRight] = findLargest(node.right);
+    const lowerNext = Math.min(node.val, lowerBoundLeft);
+    const upperNext = Math.max(node.val, upperBoundRight);
+    const isBST = isBSTLeft && isBSTRight && node.val > upperBoundLeft && node.val < lowerBoundRight;
+    const size = isBST ? (1 + sizeLeft + sizeRight) : Math.max(sizeLeft, sizeRight);
+    return [isBST, size, lowerNext, upperNext];
+}
 
 const a = new Node(10);
 const b = new Node(5);
