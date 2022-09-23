@@ -1,24 +1,12 @@
 function findLongestSubstring(str) {
-    let ans = 0;
-    let map = new Map();
-    for(let i = 0, j = 0; i < str.length; i++) {
-        if(map.get(str.charAt(i))){
-            j = Math.max(j, map.get(str.charAt(i)));
-        }
-        ans = Math.max(ans, i - j);
-        map.set(str.charAt(i), i);
+    const map = new Map();
+    let start = 0, maxLen = 0;
+    for(let i = 0; i < str.length; i++) {
+        if(map.has(str[i])) start = map.get(str[i]) + 1;
+        map.set(str[i], i);
+        maxLen = Math.max(i - start + 1, maxLen);
     }
-    return ans;
-//    let map = new Map();
-//    let ans = 0;
-//    for(let i = 0, j = 0; i < str.length; i++) {
-//     if(map.get(str.charAt(i))){
-//         j = Math.max(j , map.get(str.charAt(i)));
-//     }
-//     ans = Math.max(ans, i - j);
-//     map.set(str.charAt(i), i);
-//    }
-//    return ans;
+    return maxLen;
 }
 
 let str = "abcab";

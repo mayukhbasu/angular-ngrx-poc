@@ -1,31 +1,30 @@
 function letterCombinations(digits) {
-    const char_map = ["0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs",
-     "tuv", "wxyz"];
-     if(digits.length === 0) return null;
-     let output = [];
-     for(let i = 0; i < digits.length; i++) {
-        let index = parseInt(digits.charAt(i));
-        while(output[0].length === i) {
-            let perm = output.shift();
-            for(let c of char_map[index]) {
-                output.push(perm + c);
-            }
-        }
-     }
-     return output;
-//      let output = [];
-//      if(digits.length === 0) return null;
-//      output.push("");
-//      for(let i = 0; i < digits.length; i++) {
-//          let index = parseInt(digits.charAt(i));
-//          while(output[0].length === i) {
-//              let perm = output.shift();
-//              for(let c of char_map[index]){
-//                  output.push(perm + c);
-//              }
-//          }
-//      }
-//   return output
+    const digitMap = {
+        '2': ['a', 'b', 'c'],
+        '3': ['d', 'e', 'f'],
+        '4': ['g', 'h', 'i'],
+        '5': ['j', 'k', 'l'],
+        '6': ['m', 'n', 'o'],
+        '7': ['p', 'q', 'r', 's'],
+        '8': ['t', 'u', 'v'],
+        '9': ['w', 'x', 'y', 'z']
+    }
+    if(digits.length === 0) return [];
+    if(digits.length > 1) {
+        const firstletter = digits[0];
+        const comboWithoutFirst = letterCombinations(digits.slice(1));
+        const result = [];
+        const firstLetters = digitMap[firstletter];
+        firstLetters.forEach(letter1 => {
+            comboWithoutFirst.forEach(letter2 => {
+                result.push(letter1 + letter2);
+            })
+        });
+        return result;
+    } else {
+        return digitMap[digits];
+    }
+
 }
 
 console.log(letterCombinations("22"));
