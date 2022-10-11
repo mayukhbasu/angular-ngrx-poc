@@ -1,26 +1,17 @@
 function findMin(arr, start, end) {
     while(start < end) {
         let mid = Math.floor((start + end) / 2);
-        if(arr[mid] === arr[end]){
-            end --;
+        if(arr[mid] === arr[end]) {
+            end--;
         }
-        if(arr[mid] > arr[end]){
+        if(arr[mid] > arr[end]) {
             start = mid + 1;
         }
-        if(arr[mid] < arr[end]){
+        if(arr[mid] < arr[end]) {
             end = mid;
         }
-    
     }
     return arr[start];
-    // while(start < end) {
-    //     let mid = Math.floor((start + end)  / 2);
-    //     if(arr[mid] === arr[end]) end --;
-    //     if(arr[mid] > arr[end]) start = mid + 1;
-    //     if(arr[mid] < arr[end]) end = mid;
-    // }
-    // return arr[start];
-   
 }
 var arr1 = [8, 11, 13, 15, 1, 4, 6];
 var n1 = arr1.length;

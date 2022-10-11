@@ -1,18 +1,17 @@
-function minSwaps(arr, n) {
-    let map = new Map();
+function minSwaps(arr = [], n) {
     let ans = 0;
-    for(let i = 0; i < n ; i++){
+    const copy = arr.slice().sort();
+    const map = new Map();
+    for(let i = 0; i < arr.length; i++) {
         map.set(arr[i], i);
     }
-    let tempArray = arr.slice();
-    tempArray.sort();
     for(let i = 0; i < arr.length; i++) {
-        if(arr[i] !== tempArray[i]) {
-            let temp = arr[i];
+        if(arr[i] !== copy[i]) {
             ans++;
-            [arr[i], arr[map.get(tempArray[i])]] = [arr[map.get(tempArray[i])], arr[i]];
-            map.set(temp, map.get(tempArray[i]));
-            map.set(tempArray[i], i);
+            let temp = arr[i];
+            [arr[i], arr[map.get(copy[i])]] = [arr[map.get(copy[i])], arr[i]];
+            map.set(temp, map.get(copy[i]));
+            map.set(copy[i], i);
         }
     }
     return ans;

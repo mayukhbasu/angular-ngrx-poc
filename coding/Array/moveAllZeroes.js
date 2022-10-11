@@ -1,7 +1,7 @@
 function moveAllZero(arr) {
     let low = 0, high = arr.length - 1;
-    while(low <= high){
-        if(arr[low] === 0){
+    while(low <= high) {
+        if(arr[low] === 0) {
             [arr[low], arr[high]] = [arr[high], arr[low]];
             low++;
             high--;

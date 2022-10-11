@@ -1,14 +1,10 @@
-const chocolatedistribution = (chocolates, students) => {
-    
-    chocolates.sort((a,b) => a - b);
-    let diff = Number.MAX_VALUE;
-    for(let i = 0; i+students-1 < chocolates.length; i++) {
-        let minDiff = chocolates[i+students - 1] - chocolates[i];
-        if(minDiff < diff){
-            diff = minDiff;
-        }
+const chocolatedistribution = (chocolates = [], students) => {
+    chocolates.sort((a, b) => a - b);
+    let minDiff = Infinity;
+    for(let i = 0; i + students - 1 < chocolates.length; i++) {
+        minDiff = Math.min(minDiff, chocolates[i + students - 1] - chocolates[i]);
     }
-    return diff;
+    return minDiff;
     // chocolates.sort((a, b) => a - b);
     // let min_diff = Number.MAX_VALUE;
     // for(let i = 0; i + students -1 < chocolates.length; i++) {

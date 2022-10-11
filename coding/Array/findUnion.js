@@ -1,11 +1,12 @@
 const findUnion = (arr1 = [], arr2 = []) => {
-    let max = arr1[arr1.length - 1] > arr2[arr2.length - 1] ? arr1[arr1.length - 1]:arr2[arr2.length - 1];
-    let unionTable = new Array(max + 1).fill(0);
-    let results = [];
+    let max = arr1[arr1.length - 1] > arr2[arr2.length - 1] ? arr1[arr1.length - 1]
+    : arr2[arr2.length - 1];
+    const unionTable = new Array(max + 1).fill(0);
+    const results = [];
     results.push(arr1[0]);
     unionTable[arr1[0]]++;
     for(let i = 1; i < arr1.length; i++) {
-        if(arr1[i] !== arr1[i - 1]){
+        if(arr1[i] !== arr1[i - 1]) {
             results.push(arr1[i]);
             unionTable[arr1[i]]++;
         }
@@ -16,7 +17,7 @@ const findUnion = (arr1 = [], arr2 = []) => {
             unionTable[arr2[i]]++;
         }
     }
-    console.log(results);
+    return results;
     // let max = arr1[arr1.length - 1] > arr2[arr2.length - 1] ? arr1[arr1.length - 1]
     // : arr2[arr2.length - 1];
     // let results = [];

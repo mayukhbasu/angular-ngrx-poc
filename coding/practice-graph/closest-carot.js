@@ -1,21 +1,27 @@
+const isInbound = (grid, r , c) => {
+    const rowInbound = 0 <= r && r < grid.length;
+    const colInbound = 0 <= c && c < grid[0].length;
+    return rowInbound && colInbound;
+}
+
 const closestCarrot = (grid, startRow, startCol) => {
-    const visited = new Set([startRow+','+startCol]);
+    const visited = new Set();
+    const pos = startRow + ',' + startCol;
+    visited.add(pos);
     const queue = [[startRow, startCol, 0]];
     while(queue.length > 0) {
         const [row, col, distance] = queue.shift();
-        if(grid[row][col] === 'C') return distance;
-        const deltas = [[1,0], [-1, 0], [0, 1], [0, -1]];
-        for(let delta of deltas) {
+        if(grid[row][col] === "C") return distance;
+        const deltas = [[0,1], [1, 0], [0, -1], [-1, 0]];
+        for(const delta of deltas) {
             const [rowDelta, colDelta] = delta;
-            const neighbourRow = row + rowDelta;
+            const neighborRow = row + rowDelta;
             const neighborCol = col + colDelta;
-            const rowInbounds = 0<= neighbourRow && neighbourRow < grid.length;
-            const colInbounds = 0 <= neighborCol && neighborCol < grid[0].length;
-            const pos = neighbourRow+','+neighborCol;
-            if(rowInbounds && colInbounds && grid[neighbourRow][neighborCol] !== 'X'
-            && !visited.has(pos)){
-                queue.push([neighbourRow, neighborCol, distance + 1]);
-                visited.add(pos);
+            const neighborPos = neighborRow + ',' + neighborCol;
+            if(isInbound(grid, neighborRow, neighborCol) && grid[neighborRow][neighborCol] !== 'X'
+            && !visited.has(neighborPos)) {
+                visited.add(neighborPos)
+                queue.push([neighborRow, neighborCol, distance + 1]);
             }
         }
     }
