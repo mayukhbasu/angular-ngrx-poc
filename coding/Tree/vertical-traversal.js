@@ -32,18 +32,20 @@ function dfs(root, map, idx = 0, depth = 0){
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
-const d = new Node(4);
+const d = new Node(6);
 const e = new Node(-2);
 const f = new Node(1);
+const g = new Node(10);
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
 c.right = f;
+c.left = g;
 //       3
 //    /    \
 //   11     4
-//  / \      \
-// 4   -2     1
+//  / \     / \
+// 6   -2  10  1
 console.log(verticalTraversal(a))
