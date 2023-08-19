@@ -55,8 +55,8 @@ function mergeSortAndCount(arr, l , r) {
     let count = 0;
     if(l < r){
         let m = Math.floor((l + r) / 2);
-        count += mergeSortAndCount(arr, l, m);
-        count += mergeSortAndCount(arr, m + 1, r);
+        count += mergeAndCount(arr, l, m);
+        count += mergeAndCount(arr, m + 1, r);
         count += mergeAndCount(arr, l, m , r);
     }
     return count;
