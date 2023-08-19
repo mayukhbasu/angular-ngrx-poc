@@ -1,3 +1,6 @@
+//completely for practice
+
+
 const partition = (arr = [], start, end) => {
   let pivotLocation = start;
   let pivot = arr[end];
