@@ -1,16 +1,16 @@
 const minPlatform = (arrivals = [], departures = []) => {
   arrivals.sort((a, b) => a - b);
   departures.sort((a, b) => a - b);
-  let plat_needed = 1,result = 1, i = 1, j = 0;
+  let platform_need = 1, result = 1, i = 1, j = 0;
   while(i < arrivals.length && j < departures.length) {
     if(arrivals[i] <= departures[j]) {
-      plat_needed++;
+      platform_need++;
       i++;
     } else {
-      plat_needed--;
+      platform_need--;
       j++;
     }
-    if(plat_needed > result) result = plat_needed;
+    if(platform_need > result) result = platform_need;
   }
   return result;
 }
