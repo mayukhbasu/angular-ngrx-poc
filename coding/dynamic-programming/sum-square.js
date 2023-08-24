@@ -12,4 +12,4 @@ const summingSquares = (n, memo = {}) => {
 }
 
 
-console.log(summingSquares(8));
+console.log(summingSquares(6));
