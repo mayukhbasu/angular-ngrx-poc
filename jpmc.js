@@ -20,6 +20,9 @@
 //     this.name = "Mayukh"
 // })();
 
+// const object1 = new (function(){
+//   this.name = 'test'
+// })()
 // object1.name = "Test";
 // let newObject = object1;
 // console.log(newObject.name);
@@ -157,6 +160,16 @@
 //     console.log(value);
 //     return value + 5
 // }).then(value => console.log(value));
+
+// async function f1() {
+//   return 10
+// }
+
+// async function f2() {
+//   await 10;
+// };
+
+// Promise.all([f1(), f2()]).then(x => console.log(x));
 
 
 // JavaScript Demo: Promise.all()
@@ -427,6 +440,7 @@
 //         this.firstName = name
 //     }
 // }
+
 
 
 //How do you define property on Object constructor
@@ -832,7 +846,7 @@
 //console.log([1, 2] + [3, 4]);
 
 // const numbers = new Set([1, 1, 2, 3, 4]);
-// console.log(numbers);
+// console.log([...numbers]);
 
 // const browser = new Set("Firefox");
 // console.log(browser);
@@ -894,9 +908,9 @@
 // }
 // process([1, 2, 3, 5]);
 
-var set = new Set();
-set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
-console.log(set);
+// var set = new Set();
+// set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
+// console.log(set);
 
 // const sym1 = Symbol("one");
 // const sym2 = Symbol("one");
