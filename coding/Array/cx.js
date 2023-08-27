@@ -1,27 +1,30 @@
-
-const lcs = (str1 = '', str2 = '') => {
-  const memo = {};
-  return longestCommonSubsequence(str1, str2, str1.length - 1, str2.length - 1, memo);
-}
-
-const longestCommonSubsequence = (text1 = '', text2 = '', index1, index2, memo = {}) => {
-  if(index1 < 0 || index2 < 0) return 0;
-  const pos = index1 + ',' + index2;
-  if(memo[pos]) return memo[pos];
-  let result;
-  if(text1.charAt(index1) === text2.charAt(index2)) {
-    result = 1 + longestCommonSubsequence(text1, text2, index1 - 1, index2 - 1, memo);
-  } else {
-    result = Math.max(
-      longestCommonSubsequence(text1, text2, index1 - 1, index2, memo),
-      longestCommonSubsequence(text1, text2, index1, index2 - 1, memo)
-    )
+const flattenObj = (obj = {}) => {
+  const result = {};
+  for(const key1 in obj) {
+    if(typeof obj[key1] === 'object' && !Array.isArray(obj[key1])) {
+      const temp = flattenObj(obj[key1]);
+      for(const key2 in temp) {
+        result[key1 + '.'+key2] = temp[key2];
+        console.log(result[key1 + '.'+key2])
+      }
+    } else {
+      result[key1] = obj[key1];
+    }
   }
-  memo[pos] = result;
   return result;
 }
 
-
-const str1 = 'AGGTAB';
-const str2 = 'GXTXAYB';
-console.log('Length of LCS is ', lcs(str1, str2));
+let obj = {
+  "name": "Mayukh",
+  tekken: {
+      "character": "Armor king",
+      style: {
+          hand: "1",
+          leg: 2,
+          place: {
+              state: "Mexico"
+          }
+      }
+  }
+}
+console.log(flattenObj(obj))

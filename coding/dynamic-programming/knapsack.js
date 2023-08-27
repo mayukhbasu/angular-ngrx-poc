@@ -8,6 +8,6 @@ const knapsack = (profits = [], weights = [],n, weight) => {
 
 const profits = [20, 5, 10, 40, 15, 25];
 const weights = [1, 2, 3, 8, 7, 4];
-let knapsackWeight = 10;
+let knapsackWeight = 40;
 let n = profits.length - 1;
 console.log(knapsack(profits, weights,n, knapsackWeight));
