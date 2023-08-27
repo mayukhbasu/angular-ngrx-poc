@@ -7,7 +7,7 @@ const countPossibleDecoding = (digits = []) => {
     if(digits[i - 1] > '0') {
       count[i] = count[i - 1];
     }
-    if((digits[i - 2] === '1' || digits[i - 2] === '2') && digits[i - 1] < '7') {
+    if(digits[i - 2] === '1' || (digits[i - 2] === '2' && digits[i - 1] < '7')) {
       count[i] += count[ i - 2];
     }
   }
