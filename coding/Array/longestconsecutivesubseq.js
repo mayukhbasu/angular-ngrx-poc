@@ -14,5 +14,5 @@ const longestConsecutiveSubsequence = (arr = []) => {
   return ans;
 }
 
-let arr = [1, 9, 3, 10, 4, 20, 2];
+const arr = [1, 9, 3, 10, 4, 20, 2];
 console.log(longestConsecutiveSubsequence(arr))

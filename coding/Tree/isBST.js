@@ -38,7 +38,7 @@ const b = new Node(5);
 const c = new Node(18);
 const d = new Node(3);
 const e = new Node(9);
-const f = new Node(19);
+const f = new Node(17);
 
 a.left = b;
 a.right = c;

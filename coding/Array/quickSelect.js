@@ -10,16 +10,6 @@ function partition(arr, low , high) {
     [arr[high], arr[pivotLocation]] = [arr[pivotLocation], arr[high]];
     
     return pivotLocation
-    // let pivot = arr[high];
-    // let pivotLocation = low;
-    // for(let i = low; i <= high; i++){
-    //     if(arr[i] < arr[pivot]){
-    //         [arr[i], arr[pivotLocation]] = [arr[pivotLocation], arr[i]];
-    //         pivotLocation++;
-    //     }
-    // }
-    // [arr[pivotLocation], arr[high]] = [arr[high], arr[pivotLocation]];
-    // return pivotLocation;
 }
 
 function findkthElement(arr, low, high, k) {

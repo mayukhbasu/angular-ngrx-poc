@@ -2,6 +2,7 @@ function mergeAndCount(arr, l, m, r) {
     let left = [];
     let right = [];
     for(let i = l ; i <= m; i++) {
+        
         left.push(arr[i]);
     }
     for(let i = m + 1; i <= r; i++) {

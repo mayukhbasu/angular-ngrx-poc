@@ -1,6 +1,6 @@
 const maxSubArraySum = (arr = []) => {
  let maxSum = -Infinity;
- let startIndex = 0, endIndex = 0, max_so_far = 0, start = 0;
+ let startIndex = 0, end = 0, max_so_far = 0, start = 0;
  for(let i = 0; i < arr.length; i++) {
   max_so_far += arr[i];
   if(max_so_far > maxSum) {

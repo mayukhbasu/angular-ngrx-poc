@@ -161,15 +161,16 @@
 //     return value + 5
 // }).then(value => console.log(value));
 
-// async function f1() {
+//  async function f1() {
 //   return 10
 // }
 
-// async function f2() {
+// const a = async function f2() {
 //   await 10;
 // };
+// console.log(a())
 
-// Promise.all([f1(), f2()]).then(x => console.log(x));
+//Promise.all([f1(), f2()]).then(x => console.log(x));
 
 
 // JavaScript Demo: Promise.all()
@@ -837,7 +838,7 @@
 //console.log(10 - "10");
 
 //  console.log([0] == false);
-// if ([0]) {
+// if ([]) {
 //   console.log("I'm True");
 // } else {
 //   console.log("I'm False");

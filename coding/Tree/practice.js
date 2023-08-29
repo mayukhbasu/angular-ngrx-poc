@@ -1,27 +1,33 @@
-
 class Node {
-  constructor(value){
-      this.value = value;
+  constructor(val){
+      this.val = val;
       this.left = null;
       this.right = null;
   }
 }
 
-const diameterOfBinaryTree = (root) => {
-  let result = 0;
-  
+const treeValueCount = (root, target) => {
+  if(!root) return 0;
+  let match = root.val === target ? 1 : 0;
+  return match + treeValueCount(root.left, target) + treeValueCount(root.right, target);
 }
 
-const a = new Node('a');
-const b = new Node('b');
-const c = new Node('c');
-const d = new Node('d');
-const e = new Node('e');
-const f = new Node('f');
+const a = new Node(12);
+const b = new Node(6);
+const c = new Node(6);
+const d = new Node(4);
+const e = new Node(6);
+const f = new Node(12);
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
 c.right = f;
-console.log(diameterOfBinaryTree(a));
+
+//      12
+//    /   \
+//   6     6
+//  / \     \
+// 4   6     12
+console.log(treeValueCount(a,  6));

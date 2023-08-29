@@ -9,6 +9,6 @@ const maxDifference = (nums = []) => {
     else return maxDifference;
 }
 
-let arr = [ 34,8,10,3,2,80,30,33,1];
+let arr = [ 34,8,10,3,2,30,33,1, 80];
 let n = arr.length;
 console.log(maxDifference(arr, n));

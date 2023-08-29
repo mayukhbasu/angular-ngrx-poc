@@ -1,15 +1,9 @@
-function findMin(arr, start, end) {
+function findMin(arr = [], start, end) {
     while(start < end) {
         let mid = Math.floor((start + end) / 2);
-        if(arr[mid] === arr[end]) {
-            end--;
-        }
-        if(arr[mid] > arr[end]) {
-            start = mid + 1;
-        }
-        if(arr[mid] < arr[end]) {
-            end = mid;
-        }
+        if(arr[mid] === arr[end]) end--;
+        if(arr[mid] > arr[end]) start = mid + 1;
+        if(arr[mid] < arr[end]) end = mid;
     }
     return arr[start];
 }

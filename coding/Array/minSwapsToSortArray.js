@@ -36,7 +36,7 @@ function minSwaps(arr = [], n) {
     // console.log(map);
     // return ans;
 }
-let a = [101, 758, 315, 730, 472, 619, 460, 479];
+let a = [9, 1, 4,5];
 let n = a.length;
 
 // Output will be 5
