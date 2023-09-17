@@ -11,6 +11,8 @@ const lowestCommonAncestor = (root, val1, val2) => {
   const path1 = getPath(root, val1);
   const path2 = getPath(root, val2);
   const set2 = new Set(path2);
+  console.log(path1);
+  console.log(path2);
   for(let val of path1) {
     if(set2.has(val)) return val;
   }

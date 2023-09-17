@@ -1,13 +1,18 @@
-const knapsack = (profits = [], weights = [],n, weight) => {
-  if(weight < 0) return -Infinity;
-  if(n < 0 || weight === 0) return 0;
-  const include = weights[n] + knapsack(profits, weights, n - 1, weight - weights[n]);
-  const exclude = knapsack(profits, weights, n - 1, weight);
-  return Math.max(include, exclude);
+const knapSack = (targetWeight, weights = [], profits = [], n) => {
+  const dp = new Array(targetWeight + 1).fill(0);
+  for(let i = 0; i <= n ; i++) {
+    for(let weight = targetWeight; weight >= 0; weight--) {
+      if(weights[i] <= weight) {
+        dp[weight] = Math.max(dp[weight], dp[weight - weights[i]]+profits[i]);
+      }
+    }
+  }
+  return dp[targetWeight];
 }
 
-const profits = [20, 5, 10, 40, 15, 25];
-const weights = [1, 2, 3, 8, 7, 4];
-let knapsackWeight = 40;
-let n = profits.length - 1;
-console.log(knapsack(profits, weights,n, knapsackWeight));
+  // Driver code
+var profit = [ 60, 100, 120 ];
+var weight = [ 10, 20, 30 ];
+var W = 50;
+var n = profit.length;
+console.log(knapSack(W, weight, profit, n));

@@ -17,4 +17,4 @@ const countingChange = (amount, coins, i = 0) => {
     // return total;
 }
 
-console.log(countingChange(1, [5, 7, 3]));
+console.log(countingChange(10, [5, 7, 1]));

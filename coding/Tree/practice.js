@@ -1,33 +1,36 @@
 class Node {
-  constructor(val){
-      this.val = val;
-      this.left = null;
-      this.right = null;
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
   }
 }
 
-const treeValueCount = (root, target) => {
-  if(!root) return 0;
-  let match = root.val === target ? 1 : 0;
-  return match + treeValueCount(root.left, target) + treeValueCount(root.right, target);
-}
 
-const a = new Node(12);
-const b = new Node(6);
-const c = new Node(6);
+const maxPathSum = (root) => {
+ if(!root) return 0;
+ if(!root.left && !root.right) return root.data;
+ const leftSum = maxPathSum(root.left);
+ const rightSum = maxPathSum(root.right);
+ return root.data + Math.max(leftSum, rightSum);
+}
+const a = new Node(3);
+const b = new Node(11);
+const c = new Node(4);
 const d = new Node(4);
-const e = new Node(6);
-const f = new Node(12);
+const e = new Node(-2);
+const f = new Node(1);
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
 c.right = f;
+//       3
+//    /    \
+//   11     4
+//  / \      \
+// 4   -2     1
 
-//      12
-//    /   \
-//   6     6
-//  / \     \
-// 4   6     12
-console.log(treeValueCount(a,  6));
+maxPathSum(a); // -> 18
+console.log(maxPathSum(a));

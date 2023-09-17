@@ -1,6 +1,4 @@
-const partition = (str) => {
-   const result = [];
-   const isPalindrome = (str = '') => {
+const isPalindrome = (str = '') => {
     let start = 0, end = str.length - 1;
     while(start < end) {
         if(str[start] !== str[end]) {
@@ -11,6 +9,8 @@ const partition = (str) => {
     return true;
    }
 
+const partition = (str) => {
+   const result = [];
    const helper = (str = '', array = []) => {
     if(str.length === 0 && array.length !== 0) {
         result.push(array);

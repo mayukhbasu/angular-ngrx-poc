@@ -21,12 +21,6 @@ function reverse(nums, start) {
         start++;
         end --;
     }
-    // let i = start, j = nums.length - 1;
-    // while(i < j) {
-    //     [nums[i], nums[j]] = [nums[j], nums[i]];
-    //     i++;
-    //     j--;
-    // }
 }
 
 const arr = [1,3,5,4,3,2];

@@ -128,3 +128,6 @@
 // };
 // Object.seal(a);
 // a.test1 = 2;
+function myFunction(button){
+  document.write(button.getAttribute('onClick', 1))
+}

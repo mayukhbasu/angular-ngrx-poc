@@ -721,4 +721,18 @@
 //   mem[i][1] = arr[i].length;
 // }
 // console.log(mem);
-console.log( true + false)
+// console.log( true + false)
+//console.log(minChange(8, [1, 5, 4, 12]));
+// const itr = new Object();
+// itr[Symbol.iterator] = function * () {
+//   yield 110;
+//   yield 120;
+// }
+
+// console.log([...itr]);
+// const promise = new Promise((data) => {
+//   data(3);
+//   data(1);
+//   data(2);
+  
+// }).then(element => console.log("Promise "+element));

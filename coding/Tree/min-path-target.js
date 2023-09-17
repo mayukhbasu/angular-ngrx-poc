@@ -18,17 +18,6 @@ const pathFinder = (root, target) => {
         return [root.val, ...rightPath];
     }
     return null;
-//    if(root === null) return null;
-//    if(root.val === target) return [root.val];
-//    const leftPath = pathFinder(root.left, target)
-//    const rightPath = pathFinder(root.right, target);
-//    if(leftPath !== null) {
-//     return [root.val , ...leftPath];
-//    }
-//    if(rightPath !== null){
-//     return [root.val, ...rightPath]
-//    }
-//    return null;
 }
 
 const a = new Node("a");

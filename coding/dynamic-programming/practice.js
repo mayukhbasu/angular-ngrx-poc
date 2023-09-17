@@ -1,14 +1,18 @@
-const summingSquares = (num = 0, memo = {}) => {
-  if(num in memo) return memo[num];
-  if(num === 0) return 0;
-  let minSquares = Infinity;
-  for(let i = 1; i <= Math.sqrt(num); i++) {
-    let square = i * i;
-    let numSquares = 1 + summingSquares(num - square, memo);
-    minSquares = Math.min(minSquares, numSquares);
-  }
-  memo[num] = minSquares;
-  return minSquares;
+const maxPathSum = (grid = [[]], r = 0, c = 0, memo = {}) => {
+  if(r < 0 || c < 0 || r>= grid.length || c >= grid[0].length) return -Infinity;
+  const pos = r + '.' + c;
+  if(pos in memo) return memo[pos];
+  if(r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
+  const downsum = maxPathSum(grid, r + 1, c, memo);
+  const rightsum = maxPathSum(grid, r, c + 1, memo);
+  let result = grid[r][c] + Math.max(downsum, rightsum);
+  memo[pos] = result;
+  return result;
 }
 
-console.log(summingSquares(6));
+const grid = [
+  [1, 3, 12],
+  [5, 1, 1],
+  [3, 6, 1],
+];
+console.log(maxPathSum(grid))

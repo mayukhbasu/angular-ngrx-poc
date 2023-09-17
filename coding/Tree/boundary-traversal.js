@@ -6,10 +6,46 @@ class Node {
   }
 }
 
+const printLeft = (root) => {
+  const results = [];
+  const dfs = (root, level) => {
+    if(!root) return;
+    if(results.length === level) results.push(root.data);
+    dfs(root.left, level + 1);
+    dfs(root.right, level + 1);
+  }
+  dfs(root, 0);
+  return results;
+}
+
+const printRight = (root) => {
+  const results = [];
+  const dfs = (root, level) => {
+    if(!root) return;
+    if(results.length === level) results.push(root.data);
+    dfs(root.right, level + 1);
+    dfs(root.left, level + 1);
+  }
+  dfs(root, 0);
+  return results;
+}
+
+const printLeaves = (root) => {
+  const leafNodes = [];
+  const queue = [root];
+  while(queue.length > 0) {
+    const node = queue.shift();
+    if(!node.left && !node.right) leafNodes.push(node.data);
+    if(node.left) queue.push(node.left);
+    if(node.right) queue.push(node.right);
+  }
+  return leafNodes;
+}
 const printBoundary = (root) => {
-  if(!root) return;
-  console.log(node.data);
-  
+  const leftResults = printLeft(root);
+  const rightResults = printRight(root);
+  const leaftResults = printLeaves(root);
+  return [...leftResults, ...leaftResults, ...rightResults.reverse()];
 }
 
 const a = new Node(3);
@@ -34,4 +70,5 @@ x.right = y;
 //   11     4
 //  / \      \
 // 4   -2     1
+console.log(printBoundary(a))
 printBoundary(a)

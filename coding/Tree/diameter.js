@@ -1,38 +1,35 @@
 class Node {
-  constructor(value){
-      this.value = value;
-      this.left = null;
-      this.right = null;
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
   }
 }
 
-var diameterOfBinaryTree = function(root) {
-  let result = 1;
-  dfs(root)
-  
-  function dfs(root) {
-      if(!root) {
-          return 0;
-      }
-      let l = dfs(root.left);
-      let r = dfs(root.right);
-      result = Math.max(result, l + r + 1);
-      return Math.max(l, r) + 1;
+const diameterOfBinaryTree = (root) => {
+  let diameter = 0;
+  const depth = (node) => {
+    if(!node) return 0;
+    const leftDepth = depth(node.left);
+    const rightDepth = depth(node.right);
+    diameter = Math.max(diameter, leftDepth + rightDepth);
+    return 1 + Math.max(leftDepth, rightDepth);
   }
-  
-  return result - 1;
-};
+  depth(root);
+  return diameter;
+}
 
-const a = new Node('a');
-const b = new Node('b');
-const c = new Node('c');
-const d = new Node('d');
-const e = new Node('e');
-const f = new Node('f');
+const root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
 
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
-console.log(diameterOfBinaryTree(a));
+//       1
+//     /   \
+//   2      3
+//   / \
+// 4   5
+
+
+console.log(diameterOfBinaryTree(root));  
