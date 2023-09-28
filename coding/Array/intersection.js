@@ -1,22 +1,22 @@
-const intersection = (l1 = [], l2 = []) => {
-  l1.sort((a, b) => a - b) 
-  l2.sort((a, b) => a - b) 
-  const intersections = []
-  let l = 0, r = 0;
-  while ((l2[l] && l1[r])) {
-     const left = l1[r], right = l2[l];
-      if (right === left) {
-          intersections.push(right)
-          while (left === l1[r]) r++;
-          while (right === l2[l]) l++;
-          continue;
+const intersection = (nums1 = [], nums2 = []) => {
+  nums1.sort((a, b) => a - b);
+  nums2.sort((a, b) => a - b);
+  const result = [];
+  let i = 0, j = 0;
+  while(i < nums1.length && j < nums2.length) {
+    if(nums1[i] === nums2[j]) {
+      if(result[result.length - 1] !== nums1[i]) {
+        result.push(nums1[i]);
       }
-      if (right > left) while (left === l1[r]) r++;
-       else while (right === l2[l]) l++;
-      
+      i++;
+      j++;
+    } else if(nums1[i] < nums2[j]) {
+      i++
+    } else if(nums1[i] > nums2[j]) {
+      j++;
+    }
   }
-  return intersections;
-
+  return result;
 }
 
 const nums1 = [4,4,9,5]; 

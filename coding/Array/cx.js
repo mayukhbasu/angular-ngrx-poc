@@ -1,13 +1,21 @@
-const isSubArrayWithZeroSum = (arr = []) => {
-  const set = new Set();
-  let sum = 0;
+const minSwaps = (arr = []) => {
+  const sortedArr = arr.slice().sort((a, b) => a - b);
+  const map = new Map();
+  let ans = 0;
   for(let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-    if(set.has(0) || set.has(sum)) return true;
-    set.add(sum);
+    map.set(arr[i], i);
   }
-  return false;
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] !== sortedArr[i]) {
+      ans++;
+      let temp = arr[i];
+      [arr[i], arr[map.get(sortedArr[i])]] = [arr[map.get(sortedArr[i])], arr[i]];
+      map.set(temp, map.get(sortedArr[i]));
+      map.set(sortedArr[i], i)
+    }
+  }
+  return ans;
 }
 
-const arr =  [1, 4, -2, -2, 5, -4, 3];
-console.log(isSubArrayWithZeroSum(arr));
+let a = [9, 1, 4,5];
+console.log(minSwaps(a));

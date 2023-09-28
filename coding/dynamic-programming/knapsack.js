@@ -1,18 +1,35 @@
-const knapSack = (targetWeight, weights = [], profits = [], n) => {
-  const dp = new Array(targetWeight + 1).fill(0);
-  for(let i = 0; i <= n ; i++) {
-    for(let weight = targetWeight; weight >= 0; weight--) {
-      if(weights[i] <= weight) {
-        dp[weight] = Math.max(dp[weight], dp[weight - weights[i]]+profits[i]);
-      }
+function knapsack(values, weights, capacity) {
+  const n = values.length;
+  // Initialize a table to store the maximum value for each subproblem
+  let dp = [];
+  for(let i = 0; i <= weights.length; i++) {
+    dp[i] = [];
+    for(let j = 0; j <= capacity; j ++) {
+      dp[i][j] = 0
     }
   }
-  return dp[targetWeight];
+
+  // Populate the dp table
+  for (let i = 1; i <= n; i++) {
+      for (let w = 1; w <= capacity; w++) {
+          // If the current item's weight is less than or equal to the current capacity
+          if (weights[i - 1] <= w) {
+              dp[i][w] = Math.max(
+                  dp[i - 1][w], // Value excluding the current item
+                  dp[i - 1][w - weights[i - 1]] + values[i - 1] // Value including the current item
+              );
+          } else {
+              dp[i][w] = dp[i - 1][w]; // Just carry over the value from the previous row (excluding the current item)
+          }
+      }
+  }
+
+  // Return the value in the bottom-right cell, which contains the answer for the full problem
+  return dp[n][capacity];
 }
 
-  // Driver code
-var profit = [ 60, 100, 120 ];
-var weight = [ 10, 20, 30 ];
-var W = 50;
-var n = profit.length;
-console.log(knapSack(W, weight, profit, n));
+// Example
+const values = [60, 100, 120];
+const weights = [1, 4, 6];
+const capacity = 10;
+console.log(knapsack(values, weights, capacity));  // Output: 220

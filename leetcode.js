@@ -54,9 +54,22 @@
 // decrement() reduces the current value by 1 and then returns it.
 // reset() sets the current value to init and then returns it.
 
-// const createCounter = (init) => {
-//   let presentTemp = init;
-  
+// const createCounter = (num) => {
+//   let temp = num;
+//   return {
+//     increment: () => {
+//       temp = temp + 1;
+//       return temp;
+//     },
+//     decrement: () => {
+//       temp = temp - 1;
+//       return temp;
+//     },
+//     reset: () => {
+//       temp = num;
+//       return temp
+//     }
+//   }
 // }
 
 // const counter = createCounter(5);
