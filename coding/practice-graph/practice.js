@@ -1,22 +1,21 @@
-const bestBridge = (grid = [[]]) => {
-  let mainIsland;
-  for(let r = 0; r < grid.length; r ++) {
-    for(let c = 0; c < grid[0].length; c++) {
-      const possibleIsland = traverseIsland(grid, r, c, new Set());
-      if(possibleIsland.size > 0) {
-        mainIsland = possibleIsland;
-        break;
-      }
+const hasPath = (graph, src, dest) => {
+  const queue = [src];
+  while(queue.length > 0) {
+    const current = queue.shift();
+    if(current === dest) return true;
+    for(let neighbor of graph[current]) {
+      queue.push(neighbor);
     }
   }
-  const visited = new Set(mainIsland);
+  return false;
 }
-const grid = [
-  ["W", "W", "W", "L", "L"],
-  ["L", "L", "W", "W", "L"],
-  ["L", "L", "L", "W", "L"],
-  ["W", "L", "W", "W", "W"],
-  ["W", "W", "W", "W", "W"],
-  ["W", "W", "W", "W", "W"],
-];
-console.log(bestBridge(grid))
+
+const graph = {
+  a: ['c', 'b'],
+  b: ['d'],
+  c: ['e'],
+  d: ['f'],
+  e: [],
+  f: []
+}
+console.log(hasPath(graph, 'a', 'e'));

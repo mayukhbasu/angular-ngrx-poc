@@ -1,14 +1,11 @@
-const createCombinations = (arr = [], k = 0) => {
-  if(k === 0) return [[]];
-  if(arr.length < k) return [];
-  const first = arr[0];
-  const partialCombos = createCombinations(arr.slice(1), k - 1);
-  const combosWithFirst = [];
-  for(let combo of partialCombos) {
-    combosWithFirst.push([first, ...combo]);
+const findDuplicate = (nums = []) => {
+  nums.sort();
+  for(let i = 0; i < nums.length; i++) {
+    
   }
-  const combosWithoutFirst = createCombinations(arr.slice(1), k);
-  return [...combosWithFirst, ...combosWithoutFirst];
+  return nums;
 }
 
-console.log(createCombinations(["a", "b", "c", "d", "e"], 3));
+const nums = [4,3,2,7,8,2,3,1]
+//[1,2,2,3,3,4,7,8]
+console.log(findDuplicate(nums))

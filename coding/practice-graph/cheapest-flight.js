@@ -11,12 +11,10 @@ const graph = {
 function findCheapestFlight(graph, start, end) {
   // Initialize distance object and previous node object
   const distances = {};
-  const prev = {};
   const pq = []; // Priority Queue
 
   for (let airport in graph) {
     distances[airport] = Infinity;
-    prev[airport] = null;
   }
   
   // Start node distance is 0
@@ -35,7 +33,6 @@ function findCheapestFlight(graph, start, end) {
       if (newCost < distances[neighbor]) {
         distances[neighbor] = newCost;
         pq.push([neighbor, newCost]);
-        prev[neighbor] = currentAirport;
       }
     }
   }

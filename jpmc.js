@@ -165,12 +165,12 @@
 //   return 10
 // }
 
-// const a = async function f2() {
+// async function f2() {
 //   await 10;
 // };
-// console.log(a())
+//console.log(a())
 
-//Promise.all([f1(), f2()]).then(x => console.log(x));
+//Promise.race([f1(), f2()]).then(x => console.log(x));
 
 
 // JavaScript Demo: Promise.all()
