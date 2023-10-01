@@ -1,59 +1,29 @@
+const content = document.getElementById('content');
+let isLoading = false;
 
-"use strict";
-const postsContainer = document.getElementById('post-container');
-const loading = document.querySelector('.loader');
-const filter = document.getElementById('filter');
-let limit = 5;
-let page = 1;
+// Function to load more content
+function loadMore() {
+    if (isLoading) return;
 
-async function getPosts(){
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`);
-    const data = await res.json();
-    return data;
+    isLoading = true;
+
+    // Simulate an API call with setTimeout
+    setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+            const div = document.createElement('div');
+            div.textContent = `New content ${Date.now()} ${i}`;
+            content.appendChild(div);
+        }
+        isLoading = false;
+    }, 1000); // simulate 1 second network delay
 }
 
-async function showPosts(){
-    const posts = await getPosts();
-    posts.forEach(post => {
-        const postEl = document.createElement('div');
-        postEl.classList.add('post');
-        postEl.innerHTML = `
-        
-        <div class="number">${post.id}</div>
-        <div class="post-info">
-            <h2 class="post-title">${post.title}</h2>
-            <div class="post-body">
-                ${post.body}
-            </div>
-        </div>
-    
-        `
-        postsContainer.appendChild(postEl);
-    })
-}
-
-showPosts();
+// Event listener for scroll
 window.addEventListener('scroll', () => {
-    
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
-    console.log(clientHeight);
-    if(scrollTop + clientHeight >= scrollHeight - 5){
-        showLoading();
-        setTimeout(() => {
-            loading.classList.remove('show');
-            setTimeout(() => {
-                page ++;
-                showPosts();
-            }, 300)
-        }, 1000)
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+        loadMore();
     }
-})
+});
 
-function showLoading(){
-    
-    loading.classList.add('show');
-}
-
-const obj = {test: 1};
-Object.freeze(obj);
-obj.test = 2;
+// Load initial content
+loadMore();
