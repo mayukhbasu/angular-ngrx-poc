@@ -1,26 +1,28 @@
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
+const findNextPermutation = (arr = []) => {
+  let i = arr.length - 2;
+  while( i >= 0 && arr[i + 1] <= arr[i]) {
+    i--;
+  }
+  
+  if(i >= 0) {
+    let j = arr.length - 1;
+    while(arr[j] <= arr[i]) {
+      j--;
+    }
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  reverse(arr, i + 1);
+  return arr
+}
+
+const reverse = (arr = [], start) => {
+  let end = arr.length - 1;
+  while(start < end) {
+    [arr[start], arr[end]] = [arr[end], arr[start]];
+    start++;
+    end --;
   }
 }
 
-const largestBSTSubtree = (root) => {
-  const result = findLargest(root);
-  return result;
-}
-
-const a = new Node(10);
-const b = new Node(5);
-const c = new Node(15);
-const d = new Node(1);
-const e = new Node(8);
-const f = new Node(7);
-
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
-console.log(largestBSTSubtree(a))
+const arr = [1,3,5,4,3,2];
+console.log(findNextPermutation(arr));

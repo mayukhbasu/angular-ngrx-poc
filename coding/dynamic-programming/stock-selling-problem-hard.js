@@ -7,10 +7,10 @@ const maxProfit = (prices = [], k) => {
       profits[i][j] = Math.max(maxDiff + prices[j], profits[i][j - 1]);
     }
   }
-  console.log(profits);
+  
   return profits[k][prices.length - 1]
 }
 
 const k = 3;
-const prices = [12, 14, 17, 10, 14, 13, 12, 15];
+const prices = [12, 14,  10, 14, 13, 12, 15, 17];
 console.log(maxProfit(prices, k));

@@ -1,14 +1,20 @@
-const createCombinations = (items = [], k) => {
-   if(k === 0) return [[]];
-   if(items.length < k) return [];
-   const first = items[0];
-   const partialCombos = createCombinations(items.slice(1), k - 1);
-   const combosWithFirst = [];
-   for(const combo of partialCombos) {
-    combosWithFirst.push([first, ...combo]);
+function createCombinations(arr, n) {
+   const result = [];
+
+   function combine(start, prefix) {
+       if (n === prefix.length) {
+           result.push(prefix);
+           return;
+       }
+
+       for (let i = start; i < arr.length; i++) {
+           combine(i + 1, prefix.concat(arr[i]));
+       }
    }
-   const combosWithoutFirst = createCombinations(items.slice(1), k);
-   return [...combosWithFirst, ...combosWithoutFirst];
+
+   combine(0, []);
+   return result;
 }
+
 
 console.log(createCombinations(["a", "b", "c", "d", "e"], 3));

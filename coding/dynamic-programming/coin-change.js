@@ -2,7 +2,7 @@ const countingChange = (amount, coins, i = 0) => {
     if(amount === 0) return 1;
     let total = 0;
     const coin = coins[i];
-    for(let qty = 0; qty * coin <= amount; qty ++) {
+    for(let qty = 1; qty * coin <= amount; qty ++) {
         let remainder = amount - (qty * coin);
         total += countingChange(remainder, coins, i + 1);
     }

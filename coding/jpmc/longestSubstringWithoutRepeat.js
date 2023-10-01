@@ -6,6 +6,7 @@ function findLongestSubstring(str) {
         map.set(str[i], i);
         maxLen = Math.max(i - start + 1, maxLen);
     }
+    console.log(map)
     return maxLen;
 }
 

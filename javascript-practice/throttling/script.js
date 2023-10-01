@@ -18,14 +18,19 @@
 // window.addEventListener('click', throttleScroll);
 
 function handleClickThrottle(func, delay) {
-  let lastCalledAt = 0;
-  return function(...args) {
-    const now = Date.now();
-    if(now - lastCalledAt >= delay) {
-      func.apply(this, args);
-      lastCalledAt = now;
+  return (...args) => {
+    let cancel = () => {
+      clearImmediate
     }
   }
+  // let lastCalledAt = 0;
+  // return function(...args) {
+  //   const now = Date.now();
+  //   if(now - lastCalledAt >= delay) {
+  //     func.apply(this, args);
+  //     lastCalledAt = now;
+  //   }
+  // }
 }
 
 function clickThrottle() {
