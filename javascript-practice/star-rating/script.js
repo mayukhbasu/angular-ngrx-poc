@@ -1,17 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const stars = document.querySelectorAll('.star');
-  stars.forEach(star => star.addEventListener('click', setRating));
-
-  function setRating(e) {
-    let rating = e.target.dataset.rating;
-    updateStar(rating);
-  }
-  function updateStar(rating) {
-    stars.forEach(star => {
-      star.classList.remove('active');
-      if(star.dataset.rating <= rating) {
-        star.classList.add('active');
-      }
-    })
-  }
-})
+const stars = document.querySelectorAll('.star');
+stars.forEach(star => star.addEventListener('click', (event) => {
+  const rating = event.currentTarget.dataset.rating;
+  stars.forEach(starupdate => {
+    starupdate.classList.remove('active');
+    if(starupdate.dataset.rating <= rating) {
+      starupdate.classList.add('active');
+    }
+  })
+}))
