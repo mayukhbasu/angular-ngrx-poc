@@ -1,23 +1,23 @@
 .autocomplete {
-  position: relative;
+  width: 200px;
   display: inline-block;
+  position: relative;
 }
 
-.dropdown-content {
-  position: absolute;
-  border: 1px solid #ccc;
-  max-height: 100px;
-  overflow-y: auto;
-  width: 100%;
-  z-index: 1;
-  display: none;
-}
-
-.dropdown-content div {
+.search {
+  width: 200px;
+  height: 20px;
   padding: 10px;
-  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid lightgray;
 }
 
-.dropdown-content div:hover {
-  background-color: #f1f1f1;
+.lists {
+ position: absolute;
+ width: 200px;
+ max-height: 100px;
+ z-index: 1;
+ border: 1px solid lightgray;
+ display: none;
 }

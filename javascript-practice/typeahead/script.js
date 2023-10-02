@@ -11,31 +11,25 @@ const data = [
   "Jackfruit"
 ];
 
-function filterOptions() {
-  const search = document.getElementById("search");
-  const dropdown = document.getElementById("dropdown");
-  let filteredData = data.filter(item => item.toLowerCase().startsWith(search.value.toLowerCase()));
-
-  dropdown.innerHTML = "";
-  if (search.value === "") {
-      dropdown.style.display = "none";
-      return;
+const filterOptions = () => {
+  const search = document.getElementById('search');
+  const lists = document.getElementById('lists');
+  let filteredResult = data.filter(item => item.toLowerCase().startsWith(search.value.toLowerCase()));
+  lists.innerHTML = '';
+  if(search.value === '') {
+    lists.style.display = 'none';
+    return;
   }
 
-  for (let item of filteredData) {
-      let div = document.createElement("div");
-      div.innerText = item;
-      div.addEventListener("click", function() {
-          search.value = item;
-          dropdown.style.display = "none";
-      });
-      dropdown.appendChild(div);
+  for(let result of filteredResult) {
+    const div = document.createElement('div');
+    div.textContent = result;
+    div.addEventListener('click', () => {
+      search.value = result;
+      lists.style.display = 'none';
+    });
+    lists.appendChild(div);
   }
-  dropdown.style.display = filteredData.length > 0 ? "block" : "none";
+  lists.style.display = filteredResult.length > 0 ? 'block' : 'none';
+
 }
-
-document.addEventListener("click", function(event) {
-  if (event.target.id !== "search") {
-      document.getElementById("dropdown").style.display = "none";
-  }
-});

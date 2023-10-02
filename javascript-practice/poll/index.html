@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="poll-container">
+        <h3>Which is your favorite fruit?</h3>
+        <form id="pollForm">
+            <label>
+                <input type="radio" name="fruit" value="Apple"> Apple
+            </label><br>
+            <label>
+                <input type="radio" name="fruit" value="Banana"> Banana
+            </label><br>
+            <label>
+                <input type="radio" name="fruit" value="Cherry"> Cherry
+            </label><br>
+            <button type="button" onclick="submitVote()">Vote</button>
+        </form>
+        <div id="result" class="hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
