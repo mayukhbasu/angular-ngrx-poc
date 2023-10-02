@@ -1,16 +1,16 @@
-.calendar {
-  font-family: Arial, sans-serif;
-  width: 240px;  /* Adjusted width */
+.calender {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 240px;
   padding: 10px;
   border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .weekdays, .dates {
@@ -22,7 +22,7 @@
   box-sizing: border-box;  /* This ensures that the padding and border are included in the element's total width and height */
   width: calc(100% / 7 - 2px);  /* Subtracting the total margin */
   height: 30px;
-  display: flex;
+  
   align-items: center;
   justify-content: center;
   margin: 1px;
