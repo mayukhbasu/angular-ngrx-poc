@@ -1,23 +1,29 @@
 .autocomplete {
   width: 200px;
-  display: inline-block;
   position: relative;
+  display: inline-block;
 }
 
 .search {
   width: 200px;
-  height: 20px;
+  height: 30px;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 1px solid rgb(245, 234, 234);
   outline: none;
-  border: 1px solid lightgray;
 }
 
 .lists {
- position: absolute;
- width: 200px;
- max-height: 100px;
- z-index: 1;
- border: 1px solid lightgray;
- display: none;
+  position: absolute;
+  max-height: 200px;
+  z-index: 1;
+  display: none;
+  
+}
+
+.lists div {
+  padding: 20px;
+  width: 180px;
+  border: 1px solid gray;
 }

@@ -1,11 +1,18 @@
-const delayedCall = (fn, args, duration) => {
-  
+const once = (fn) => {
+  let called = false;
+  let result;
+  return (...args) => {
+    if(!called) {
+      called = true;
+      result = fn(...args);
+    }
+    return result;
+  }
 }
+const logOnce = once((message) => {
+  console.log(message);
+  return message;
+})
 
-const sayHello = (name) => {
-  console.log(`Hello ${name}`);
-}
-
-
-const cancel = delayedCall(sayHello, ['Mayukh'], 1000);
-//cancel();
+logOnce("hello");
+logOnce("world");

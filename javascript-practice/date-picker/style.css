@@ -22,7 +22,6 @@
   box-sizing: border-box;  /* This ensures that the padding and border are included in the element's total width and height */
   width: calc(100% / 7 - 2px);  /* Subtracting the total margin */
   height: 30px;
-  
   align-items: center;
   justify-content: center;
   margin: 1px;

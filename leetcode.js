@@ -124,30 +124,39 @@
 
 //memoize a function
 
-// const memoize = (fn) => {
-//   const cache = new Map();
-//   return (...args) => {
-    
-//     const key = JSON.stringify(args);
-//     if(cache.has(key)) {
-//       return cache.get(key);
-//     }
-//     const result = fn(...args);
-//     console.log(...args)
-//     cache.set(key, result);
-//     return result;
-//   }
-// }
+function memoize(fn) {
+  const cache = {};
 
-// const factorial = memoize((n) => {
-//   //console.log(`Computing factorial for ${n}`);  // This will help us see if the function is computed or retrieved from cache
-//   if (n <= 1) return 1;
-//   return n * factorial(n - 1);
-// });
+  return function(...args) {
+      const key = JSON.stringify(args);
+      
+      if (cache[key]) {
+          return cache[key];
+      }
+      
+      const result = fn.apply(this, args);
+      cache[key] = result;
+      return result;
+  };
+}
 
-// console.log(factorial(5));  // Computes and logs: Computing factorial for 5, 4, 3, 2, 1
-// console.log(factorial(5));  // Retrieves from cache, no computation logs
-// console.log(factorial(6)); 
+const calculator = {
+  baseValue: 10,
+  add: function(a, b) {
+      console.log('Calculating sum...');
+      return this.baseValue + a + b;
+  }
+};
+
+const memoizedAdd = memoize(calculator.add);
+
+// Using the memoizedAdd directly will not include the baseValue
+console.log(memoizedAdd(3, 4));  // Logs "Calculating sum..." then "7"
+
+// Binding the memoized function to the calculator object to utilize its context (this)
+const boundMemoizedAdd = memoizedAdd.bind(calculator);
+console.log(boundMemoizedAdd(3, 4));  // Logs "17" without "Calculating sum..."
+
 
 // Given two promises promise1 and promise2, return a new promise. promise1 
 // and promise2 will both resolve 
@@ -365,37 +374,56 @@
 
 //You may assume the obj is the output of JSON.parse. In other words, it is valid JSON.
 
-function compact(obj) {
-  // Base case: if obj is not an object or array, return obj directly
-  if (obj === null || typeof obj !== 'object') {
-    return obj;
-  }
+// function compact(obj) {
+//   // Base case: if obj is not an object or array, return obj directly
+//   if (obj === null || typeof obj !== 'object') {
+//     return obj;
+//   }
 
-  if (Array.isArray(obj)) {
-    // Handle arrays: filter out falsy values and compact each item
-    return obj
-      .map(item => compact(item))
-      .filter(Boolean);
-  } else {
-    // Handle objects: remove keys with falsy values and compact each value
-    let result = {};
-    for (let key in obj) {
-      if (Boolean(obj[key])) {
-        result[key] = compact(obj[key]);
-      }
-    }
-    return result;
-  }
-}
+//   if (Array.isArray(obj)) {
+//     // Handle arrays: filter out falsy values and compact each item
+//     return obj
+//       .map(item => compact(item))
+//       .filter(Boolean);
+//   } else {
+//     // Handle objects: remove keys with falsy values and compact each value
+//     let result = {};
+//     for (let key in obj) {
+//       if (Boolean(obj[key])) {
+//         result[key] = compact(obj[key]);
+//       }
+//     }
+//     return result;
+//   }
+// }
 
 
-// Test cases
-console.log(compact({ a: 0, b: { c: '', d: 'test', e: null, f: { g: false, h: 'value' } }, 
-i: [1, 0, false, '', 'yes']}));
-// Expected output: { b: { d: 'test', f: { h: 'value' } }, i: [1, 'yes'] }
+// // Test cases
+// console.log(compact({ a: 0, b: { c: '', d: 'test', e: null, f: { g: false, h: 'value' } }, 
+// i: [1, 0, false, '', 'yes']}));
+// // Expected output: { b: { d: 'test', f: { h: 'value' } }, i: [1, 'yes'] }
 
-console.log(compact([0, 1, '', false, 'test', { a: 0, b: 'yes' }]));
-// Expected output: [1, 'test', { b: 'yes' }]
+// console.log(compact([0, 1, '', false, 'test', { a: 0, b: 'yes' }]));
+// // Expected output: [1, 'test', { b: 'yes' }]
+
+//custom map implementation
+// if (!Array.prototype.customMap) {
+//   Array.prototype.customMap = function(callback) {
+//       // 'this' refers to the array on which customMap is called
+//       const result = [];
+
+//       for (let i = 0; i < this.length; i++) {
+//           result.push(callback(this[i], i, this));
+//       }
+
+//       return result;
+//   };
+// }
+
+// Example usage:
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.customMap(num => num * 2);
+console.log(doubled);  // [2, 4, 6, 8]
 
 
 
