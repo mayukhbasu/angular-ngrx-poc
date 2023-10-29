@@ -1,18 +1,16 @@
-const once = (fn) => {
-  let called = false;
-  let result;
-  return (...args) => {
-    if(!called) {
-      called = true;
-      result = fn(...args);
-    }
-    return result;
+const delay = (fn, args, time) => {
+  const timeoutId = setTimeout(() => {
+    fn(...args);
+  }, time);
+  const cancelFn = () => {
+    clearTimeout(timeoutId);
   }
+  return cancelFn;
 }
-const logOnce = once((message) => {
-  console.log(message);
-  return message;
-})
 
-logOnce("hello");
-logOnce("world");
+const sayHello = (name) => {
+  console.log(name);
+}
+
+const delayedCall = delay(sayHello, ["Max"], 1000);
+delayedCall();

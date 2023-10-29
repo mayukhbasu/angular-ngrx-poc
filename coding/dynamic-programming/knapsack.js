@@ -29,7 +29,7 @@ function knapsack(values, weights, capacity) {
 }
 
 // Example
-const values = [60, 100, 120];
-const weights = [1, 4, 6];
+const values = [60, 120, 100];
+const weights = [1, 6, 4];
 const capacity = 10;
 console.log(knapsack(values, weights, capacity));  // Output: 220

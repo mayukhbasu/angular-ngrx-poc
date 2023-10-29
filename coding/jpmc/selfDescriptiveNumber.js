@@ -1,51 +1,16 @@
-function findSelfDescriptiveNumber(num) {
-    const numArr = num.split("");
-    let map = new Map();
-    for(let i = 0; i < numArr.length; i++){
-        if(map.has(numArr[i])){
-            map.set(numArr[i], map.get(numArr[i]) + 1);
-        } else {
-            map.set(numArr[i], 1);
-        }
+function isSelfDescriptiveNumber(num) {
+    const numArr = [...num].map(Number);
+    const count = new Array(numArr.length).fill(0);
+
+    for (let digit of numArr) {
+        if (digit < count.length) count[digit]++;
     }
-    console.log(map)
-    for(let i = 0; i < numArr.length; i++){
-        if(map.get(i.toString())){
-            if(map.get(i.toString()) != numArr[i]){
-                return false;
-            }
-        }   
-        
+
+    for (let i = 0; i < numArr.length; i++) {
+        if (numArr[i] !== count[i]) return false;
     }
-    // for(let i = 0; i < numArr.length; i++) {
-    //     if(countMap.get(i.toString())) {
-    //         if(countMap.get(i.toString()) != numArr[i]){
-    //             return false;
-    //         }
-    //     }
-       
-    // }
+    console.log(count)
     return true;
-    // const numArr = num.split("");
-    // let countMap = new Map();
-    // for(let i = 0; i < numArr.length; i++) {
-        
-    //     if(countMap.has(numArr[i])){
-    //         countMap.set(numArr[i], countMap.get(numArr[i]) + 1);
-    //     } else {
-    //         countMap.set(numArr[i], 1);
-    //     }
-    // }
-    // for(let i = 0; i < numArr.length; i++) {
-    //     if(countMap.get(i.toString())) {
-    //         if(countMap.get(i.toString()) != numArr[i]){
-    //             return false;
-    //         }
-    //     }
-       
-    // }
-    
-    // return true;
 }
 
-console.log(findSelfDescriptiveNumber("521001000"));
+console.log(isSelfDescriptiveNumber("521001000"));

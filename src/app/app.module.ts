@@ -11,11 +11,15 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { ChangeDetectionModule } from './change-detection/change-detection.module';
 import { ReqresModule } from './reqres/reqres.module';
+import { OnChangeComponent } from './lifecycles/on-change/on-change.component';
+import { ChildComponent } from './lifecycles/on-change/child/child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ButtonComponent,
+    OnChangeComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,

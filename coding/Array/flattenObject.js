@@ -15,9 +15,9 @@ const flattenObj = (obj) => {
     
 
 let obj = {
-    "name": "Mayukh",
-    tekken: {
-        "character": "Armor king",
+    "name": "Max",
+    game: {
+        "character": "Ling",
         style: {
             hand: "1",
             leg: 2,
@@ -27,4 +27,17 @@ let obj = {
         }
     }
 }
-console.log(flattenObj(obj))
+
+let obj1 = {
+    "name": "Max",
+    "play": {
+        style: {
+            hand: "1",
+            leg: 2,
+            place: {
+                state: "Mexico"
+            } 
+        }
+    }
+}
+console.log(flattenObj(obj1))

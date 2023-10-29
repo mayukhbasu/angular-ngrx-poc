@@ -1,25 +1,12 @@
-const decodeString = (str = '') => {
-  const stack = [];
-  let currString = '';
-  let currNum = 0;
-  for(let char of str) {
-    if(char === '[') {
-      stack.push(currString);
-      stack.push(currNum);
-      currString = '';
-      currNum = 0; 
-    } else if(char === ']') {
-      let prevNum = stack.pop();
-      let prevString = stack.pop();
-      currString = prevString + currString.repeat(parseInt(prevNum));
-    } else if(parseInt(char) || char === '0') {
-      currNum = currNum * 10 + parseInt(char);
-    } else {
-      currString += char;
-    }
-  } 
-  return currString;
+const maxProfitcalculation = (prices = []) => {
+  let minValue = Infinity;
+  let maxProfit = -Infinity;
+  for(let i = 0; i < prices.length; i++) {
+    if(prices[i] < minValue) minValue = prices[i];
+    maxProfit = Math.max(arr[i] - minValue);
+  }
+  return maxProfit;
 }
 
-
-console.log(decodeString("3[a]2[bc]"));
+const prices = [7,1,5,3,6,4];
+console.log(maxProfitcalculation(prices));

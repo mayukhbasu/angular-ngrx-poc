@@ -5,6 +5,7 @@ function PredictTheWinner(nums) {
     for (let i = 0; i < n; i++) {
         dp[i][i] = nums[i];
     }
+    console.log(dp)
 
     for (let len = 2; len <= n; len++) {
         for (let i = 0; i <= n - len; i++) {
@@ -17,5 +18,8 @@ function PredictTheWinner(nums) {
 }
 
 // Example usage:
-const nums = [1, 5, 2];
+const nums = [1, 5, 2, 4, 5];
 console.log(PredictTheWinner(nums));  // Expected output: false
+
+// Time complexity: O(n ^ 2)
+// Space Complexity: O(n ^ 2)

@@ -124,39 +124,30 @@
 
 //memoize a function
 
-function memoize(fn) {
-  const cache = {};
+// const memoize = (fn) => {
+//   const cache = new Map();
+//   return (...args) => {
+    
+//     const key = JSON.stringify(args);
+//     if(cache.has(key)) {
+//       return cache.get(key);
+//     }
+//     const result = fn(...args);
+//     console.log(...args)
+//     cache.set(key, result);
+//     return result;
+//   }
+// }
 
-  return function(...args) {
-      const key = JSON.stringify(args);
-      
-      if (cache[key]) {
-          return cache[key];
-      }
-      
-      const result = fn.apply(this, args);
-      cache[key] = result;
-      return result;
-  };
-}
+// const factorial = memoize((n) => {
+//   //console.log(`Computing factorial for ${n}`);  // This will help us see if the function is computed or retrieved from cache
+//   if (n <= 1) return 1;
+//   return n * factorial(n - 1);
+// });
 
-const calculator = {
-  baseValue: 10,
-  add: function(a, b) {
-      console.log('Calculating sum...');
-      return this.baseValue + a + b;
-  }
-};
-
-const memoizedAdd = memoize(calculator.add);
-
-// Using the memoizedAdd directly will not include the baseValue
-console.log(memoizedAdd(3, 4));  // Logs "Calculating sum..." then "7"
-
-// Binding the memoized function to the calculator object to utilize its context (this)
-const boundMemoizedAdd = memoizedAdd.bind(calculator);
-console.log(boundMemoizedAdd(3, 4));  // Logs "17" without "Calculating sum..."
-
+// console.log(factorial(5));  // Computes and logs: Computing factorial for 5, 4, 3, 2, 1
+// console.log(factorial(5));  // Retrieves from cache, no computation logs
+// console.log(factorial(6)); 
 
 // Given two promises promise1 and promise2, return a new promise. promise1 
 // and promise2 will both resolve 
@@ -273,18 +264,18 @@ console.log(boundMemoizedAdd(3, 4));  // Logs "17" without "Calculating sum..."
 // length of the last subarray may be less than size 
 // if arr.length is not evenly divisible by size.
 
-// const chunkArray = (arr = [], size) => {
-//   const chunked = [];
-//   for(let i = 0; i < arr.length; i = i+ size) {
-//     let chunk = arr.slice(i, i + size)
-//     chunked.push(chunk);
-//   }
-//   return chunked
-// }
+const chunkArray = (arr = [], size) => {
+  const chunked = [];
+  for(let i = 0; i < arr.length; i = i+ size) {
+    let chunk = arr.slice(i, i + size)
+    chunked.push(chunk);
+  }
+  return chunked
+}
 
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// const size = 4;
-// console.log(chunkArray(arr, size));
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const size = 4;
+console.log(chunkArray(arr, size));
 
 // Write code that enhances all arrays such that you can 
 // call the array.groupBy(fn) method on any array and it will 

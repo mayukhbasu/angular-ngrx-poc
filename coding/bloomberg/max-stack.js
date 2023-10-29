@@ -20,6 +20,7 @@ class MaxStack {
         } else {
             this.maxStack.push(this.maxStack[this.maxStack.length - 1]);
         }
+        console.log(this.maxStack);
     }
 
     // Remove and return the top element from the stack and update the max stack

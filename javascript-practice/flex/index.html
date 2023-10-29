@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Demo</title>
+    <style>
+        .container {
+            display: flex;
+            height: 300px;
+            border: 2px solid black;
+            margin: 20px;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        /* Direction and Wrapping */
+        .container.column {
+            flex-direction: column;
+        }
+
+        .container.wrap {
+            flex-wrap: wrap;
+        }
+
+        /* Justify content */
+        .container.justify-end {
+            justify-content: flex-end;
+        }
+
+        .container.space-around {
+            justify-content: space-around;
+        }
+
+        /* Align items */
+        .container.align-end {
+            align-items: flex-end;
+        }
+
+        .container.center {
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Child flex properties */
+        .grow {
+            flex-grow: 1;
+        }
+
+        .shrink {
+            flex-shrink: 2;
+        }
+
+        .basis {
+            flex-basis: 150px;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: tomato;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Standard Row</h2>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <h2>Column</h2>
+    <div class="container column">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <h2>Justify End and Align End</h2>
+    <div class="container justify-end align-end">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <h2>Space Around</h2>
+    <div class="container space-around">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <h2>Flex Grow, Shrink, and Basis</h2>
+    <div class="container">
+        <div class="box grow">Grow</div>
+        <div class="box shrink">Shrink</div>
+        <div class="box basis">Basis</div>
+    </div>
+</body>
+</html>

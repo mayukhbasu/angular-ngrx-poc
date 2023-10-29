@@ -1,32 +1,17 @@
-function countBinarySubstring(str) {
-   let index = 0, ans = 0;
-   let groups = new Array(str.length - 1).fill(0);
-   for(let i = 1; i < str.length; i++) {
-    if(str[i] !== str[i-1]){
-        groups[++index] = 1;
-    } else {
-        groups[index]++;
+function countBinarySubstring(s) {
+    let prevCount = 0, currCount = 1, result = 0;
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] === s[i - 1]) {
+            currCount++;
+        } else {
+            prevCount = currCount;
+            currCount = 1;
+        }
+        if (prevCount >= currCount) {
+            result++;
+        }
     }
-   }
-   for(let i = 1; i <= index; i++) {
-    ans += Math.min(groups[i], groups[i-1]);
-   }
-   return ans;
-    // let index = 0, ans = 0;
-    // let groups = new Array(str.length - 1).fill(0);
-    // for(let i = 1; i < str.length ; i++) {
-    //     if(str[i] !== str[i-1]){
-    //         groups[++index] = 1
-    //     } else {
-    //         groups[index]++;
-    //     }
-    // }
-    // for(let i = 1; i <= index ; i++) {
-    //     ans += Math.min(groups[i], groups[i-1]);
-    // }
-    // return ans;
-    
-    
+    return result;
 }
 
-console.log(countBinarySubstring("XXXYY"));
+console.log(countBinarySubstring("XXXYY"));  // Outputs: 2

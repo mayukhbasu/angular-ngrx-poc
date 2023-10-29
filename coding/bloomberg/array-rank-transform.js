@@ -5,3 +5,4 @@ const arrayRankTransform = (arr = []) => {
 
 const arr = [40,10,20,30];
 console.log(arrayRankTransform(arr));
+

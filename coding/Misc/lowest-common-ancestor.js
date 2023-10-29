@@ -6,34 +6,9 @@ class Node {
   }
 }
 
-const lowestCommonAncestor = (root, val1, val2) => {
-    // todo
-  const path1 = getPath(root, val1);
-  const path2 = getPath(root, val2);
-  const set2 = new Set(path2);
-  console.log(path1);
-  console.log(path2);
-  for(let val of path1) {
-    if(set2.has(val)) return val;
-  }
-};
-
-const getPath = (root, targetVal) => {
-    if(root === null) return null;
-    if(root.val === targetVal) {
-        return [root.val]
-    }
-    const leftPath = getPath(root.left, targetVal);
-    if(leftPath !== null) {
-        leftPath.push(root.val);
-        return leftPath;
-    }
-    const rightPath = getPath(root.right, targetVal);
-    if(rightPath !== null) {
-        rightPath.push(root.val);
-        return rightPath;
-    }
-    return null;
+const lowestCommonAncestor = (root, value1, value2) => {
+  const path1 = getPath(root, value1);
+  const path2 = getPath(root, value2);
 }
 
 const a = new Node('a');
@@ -52,4 +27,11 @@ b.right = e;
 c.right = f;
 e.left = g;
 e.right = h;
-console.log(lowestCommonAncestor(a, 'd', 'g')); 
+console.log(lowestCommonAncestor(a, 'd', 'f')); 
+// a
+// /   \
+// b     c
+// / \     \
+// d   e     f
+// / \
+// g   h

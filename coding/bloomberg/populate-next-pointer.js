@@ -1,33 +1,38 @@
 class Node {
-    constructor(val){
-        this.val = val;
-        this.left = null;
-        this.right = null;
-        this.next = null;
-    }
+  constructor(val){
+      this.val = val;
+      this.left = null;
+      this.right = null;
+      this.next = null;
+  }
 }
 
-var getNextMost = function(root) {
-    if (!root) return null;
-    if (root.left) return root.left; // check left leg
-    if (root.right) return root.right; // check right leg
-    return getNextMost(root.next); // check nexts
+function connect(root) {
+  if (!root) return null;
+  
+  let queue = [root];
+  
+  while (queue.length) {
+      let size = queue.length;
+      let prev = null;
+      
+      for (let i = 0; i < size; i++) {
+          let current = queue.shift();
+          
+          if (prev) {
+              prev.next = current;
+          }
+          
+          if (current.left) queue.push(current.left);
+          if (current.right) queue.push(current.right);
+          
+          prev = current;
+      }
   }
   
-  var connect = function(root) {
-    if (!root) {
-      return root;
-    }
-    if (root.right) {
-      root.right.next = getNextMost(root.next);
-    }
-    if (root.left) {
-      root.left.next = root.right ? root.right : getNextMost(root.next);
-    }
-    connect(root.right);
-    connect(root.left);
-    return root;
-  };
+  return root;
+}
+
 const a = new Node(12);
 const b = new Node(6);
 const c = new Node(5);
@@ -41,4 +46,4 @@ b.left = d;
 b.right = e;
 c.right = f;
 
-console.log(connect(a))
+console.log(connect(a));

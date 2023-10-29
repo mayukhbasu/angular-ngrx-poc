@@ -1,0 +1,19 @@
+/* styles.css */
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  gap: 1px;
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button.mine {
+  background-color: red;
+}

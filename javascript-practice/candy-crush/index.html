@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candy Crush Example</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(6, 50px); /* 6x6 grid */
+            gap: 5px;
+        }
+
+        .candy {
+            width: 50px;
+            height: 50px;
+            background-color: #FF00FF; /* Candy color */
+            border-radius: 50%; /* Make it circular */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Candy Crush Example</h1>
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const numRows = 6;
+        const numCols = 6;
+        let selectedCandy = null;
+
+        // Create the grid of candies
+        for (let row = 0; row < numRows; row++) {
+            for (let col = 0; col < numCols; col++) {
+                const candy = document.createElement('div');
+                candy.classList.add('candy');
+                candy.dataset.row = row;
+                candy.dataset.col = col;
+                candy.addEventListener('click', () => handleCandyClick(row, col));
+                grid.appendChild(candy);
+            }
+        }
+
+        // Function to handle candy click
+        function handleCandyClick(row, col) {
+            const candy = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            if (!selectedCandy) {
+                // No candy is currently selected, so select the clicked candy
+                selectedCandy = { row, col };
+                candy.style.backgroundColor = 'blue'; // Highlight the selected candy
+            } else {
+                // A candy is already selected, so attempt to swap candies
+                const { row: selectedRow, col: selectedCol } = selectedCandy;
+                if (isAdjacent(row, col, selectedRow, selectedCol)) {
+                    // Swap candies
+                    swapCandies(row, col, selectedRow, selectedCol);
+                    selectedCandy = null; // Reset selected candy
+                    setTimeout(() => checkMatches(), 500); // Check for matches after a short delay
+                } else {
+                    // Deselect the previously selected candy
+                    const prevSelectedCandy = document.querySelector(`[data-row="${selectedRow}"][data-col="${selectedCol}"]`);
+                    prevSelectedCandy.style.backgroundColor = '#FF00FF'; // Reset color
+                    selectedCandy = { row, col }; // Select the new candy
+                    candy.style.backgroundColor = 'blue'; // Highlight the new candy
+                }
+            }
+        }
+
+        // Function to check if two candies are adjacent
+        function isAdjacent(row1, col1, row2, col2) {
+            return Math.abs(row1 - row2) + Math.abs(col1 - col2) === 1;
+        }
+
+        // Function to swap two candies in the grid
+        function swapCandies(row1, col1, row2, col2) {
+            const candy1 = document.querySelector(`[data-row="${row1}"][data-col="${col1}"]`);
+            const candy2 = document.querySelector(`[data-row="${row2}"][data-col="${col2}"]`);
+
+            // Swap their positions in the grid
+            const temp = candy1.style.backgroundColor;
+            candy1.style.backgroundColor = candy2.style.backgroundColor;
+            candy2.style.backgroundColor = temp;
+        }
+
+        // Function to check for candy matches (basic example)
+        function checkMatches() {
+            const candies = document.querySelectorAll('.candy');
+            candies.forEach(candy => {
+                const row = parseInt(candy.dataset.row);
+                const col = parseInt(candy.dataset.col);
+                const color = candy.style.backgroundColor;
+                const neighbors = [
+                    { row: row - 1, col },
+                    { row: row + 1, col },
+                    { row, col: col - 1 },
+                    { row, col: col + 1 }
+                ];
+
+                // Check if any neighbor has the same color
+                for (const neighbor of neighbors) {
+                    const { row: neighborRow, col: neighborCol } = neighbor;
+                    if (
+                        neighborRow >= 0 && neighborRow < numRows &&
+                        neighborCol >= 0 && neighborCol < numCols
+                    ) {
+                        const neighborCandy = document.querySelector(`[data-row="${neighborRow}"][data-col="${neighborCol}"]`);
+                        if (neighborCandy.style.backgroundColor === color) {
+                            // Found a match, remove both candies
+                            grid.removeChild(candy);
+                            grid.removeChild(neighborCandy);
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

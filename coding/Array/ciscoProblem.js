@@ -1,45 +1,34 @@
 function findStatisticalIndicator(arr) {
+    // Map to count occurrences of each number
     let mapForCount = new Map();
-    let mapForCountConsecutive = new Map();
-    for(let i = 0; i < arr.length; i++) {
-        if(mapForCount.has(arr[i])){
-            mapForCount.set(arr[i], mapForCount.get(arr[i])+1);
-        } else {
-            mapForCount.set(arr[i], 1);
-        }
+
+    for(let num of arr) {
+        mapForCount.set(num, (mapForCount.get(num) || 0) + 1);
     }
-    //console.log(mapForCount)
-    let index = 0;
-    let count = 0;
-    for(let i = 0; i < arr.length; i++) {
-       if(arr[i] === arr[index]){
-        ++count;
-        if(count === arr[i]) {
-            mapForCountConsecutive.set(arr[i], count);
-        } else {
-            if(mapForCountConsecutive.get(arr[i]) !== arr[i])
-            mapForCountConsecutive.set(arr[i], 0);
-        }
-        
-        
-        
-       } else {
-          index = i;
-          count = 1;
-       }
-    }
+
     let indicatorOneCount = 0;
-    let indicatorTwoCount = 0;
     for(const [key, value] of mapForCount.entries()) {
-        if(key === value) indicatorOneCount ++;
+        if(key === value) indicatorOneCount++;
     }
-    for(const [key, value] of mapForCountConsecutive.entries()) {
-        if(key === value) indicatorTwoCount ++;
+
+    let indicatorTwoCount = 0;
+    for(let i = 0; i < arr.length; ) {
+        let count = 0;
+        let currentNum = arr[i];
+        
+        // Count consecutive occurrences
+        while(i < arr.length && arr[i] === currentNum) {
+            count++;
+            i++;
+        }
+
+        if(count === currentNum) indicatorTwoCount++;
     }
-    console.log(Math.abs(indicatorOneCount - indicatorTwoCount));
-    console.log(mapForCount);
-    console.log(mapForCountConsecutive)
+
+    console.log("Indicator One Count:", indicatorOneCount);
+    console.log("Indicator Two Count:", indicatorTwoCount);
+    console.log("Difference:", Math.abs(indicatorOneCount - indicatorTwoCount));
 }
 
-let arr = [2,3,3,3,2,3, 1];
+let arr = [2,3,3,3,2,3,1];
 findStatisticalIndicator(arr);

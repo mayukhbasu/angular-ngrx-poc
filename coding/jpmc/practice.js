@@ -1,28 +1,14 @@
-const findNextPermutation = (arr = []) => {
-  let i = arr.length - 2;
-  while( i >= 0 && arr[i + 1] <= arr[i]) {
-    i--;
+const isSelfDescriptiveNumber = (num = '') => {
+  const numArray = num.split('').map(Number);
+  const count = new Array(numArray.length).fill(0);
+
+  for(let i = 0; i < numArray.length; i++) {
+    count[numArray[i]]++;
   }
-  
-  if(i >= 0) {
-    let j = arr.length - 1;
-    while(arr[j] <= arr[i]) {
-      j--;
-    }
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  for(let i = 0; i < numArray.length; i++) {
+    if(numArray[i] !== count[i]) return false;
   }
-  reverse(arr, i + 1);
-  return arr
+  return true;
 }
 
-const reverse = (arr = [], start) => {
-  let end = arr.length - 1;
-  while(start < end) {
-    [arr[start], arr[end]] = [arr[end], arr[start]];
-    start++;
-    end --;
-  }
-}
-
-const arr = [1,3,5,4,3,2];
-console.log(findNextPermutation(arr));
+console.log(isSelfDescriptiveNumber("5210010000"));

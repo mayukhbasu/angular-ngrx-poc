@@ -9,4 +9,4 @@ const minimumOperation = (num) => {
   return result[num];
 }
 
-console.log(minimumOperation(3))
+console.log(minimumOperation(7));
