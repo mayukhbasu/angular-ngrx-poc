@@ -4,8 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-
+        {
+            "type": "java",
+            "name": "ArrayListDemo",
+            "request": "launch",
+            "mainClass": "coding.java.ArrayListDemo",
+            "projectName": "angular-ngrx-poc-1_8d89d4f8"
+        },
+        {
+            "type": "java",
+            "name": "AlternativeSorting",
+            "request": "launch",
+            "mainClass": "coding.array.AlternativeSorting",
+            "projectName": "angular-ngrx-poc-1_8d89d4f8"
+        },
         {
             "name": "Launch Program",
             "program": "${workspaceFolder}/app.js",

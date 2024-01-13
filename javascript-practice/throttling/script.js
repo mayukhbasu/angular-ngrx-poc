@@ -1,41 +1,47 @@
-// function throttle(func, delay) {
+// // function throttle(func, delay) {
+// //   let lastCalled = 0;
+// //   return function(...args) {
+// //     const now = Date.now();
+// //     if(now - lastCalled >= delay) {
+// //       func.apply(this, args);
+// //       lastCalled = now;
+// //     }
+// //   }
+// // }
+
+// // function handleScroll() {
+// //   console.log("Handle scroll");
+// // }
+
+// // const throttleScroll = throttle(handleScroll, 200);
+
+// // window.addEventListener('click', throttleScroll);
+
+// function throttle(func, wait) {
 //   let lastCalled = 0;
 //   return function(...args) {
-//     const now = Date.now();
-//     if(now - lastCalled >= delay) {
+//     let now = Date.now();
+//     if(now - lastCalled >= wait) {
 //       func.apply(this, args);
 //       lastCalled = now;
 //     }
 //   }
 // }
 
-// function handleScroll() {
-//   console.log("Handle scroll");
+// function clickThrottle() {
+//   console.log("Click event");
 // }
 
-// const throttleScroll = throttle(handleScroll, 200);
+// const clickEvent = throttle(clickThrottle, 2000);
+// window.addEventListener('click', clickEvent);
 
-// window.addEventListener('click', throttleScroll);
+let map = new Map();
 
-function handleClickThrottle(func, delay) {
-  return (...args) => {
-    let cancel = () => {
-      clearImmediate
-    }
-  }
-  // let lastCalledAt = 0;
-  // return function(...args) {
-  //   const now = Date.now();
-  //   if(now - lastCalledAt >= delay) {
-  //     func.apply(this, args);
-  //     lastCalledAt = now;
-  //   }
-  // }
+// Setting key-value pairs in the Map
+map.set('apple', 500);
+map.set('banana', 300);
+map.set('orange', 200);
+console.log(map.size)
+for(const [key , value] of map) {
+  console.log("Key is "+key+'  '+"Value is "+value);
 }
-
-function clickThrottle() {
-  console.log("Click event");
-}
-
-const clickEvent = handleClickThrottle(clickThrottle, 2000);
-window.addEventListener('click', clickEvent);

@@ -1,32 +1,35 @@
-const largestComponent = (graph = {}) => {
-  const visited = new Set();
-  let largest = 0;
+const graph = {
+  'JFK': {'SFO': 500, 'ATL': 200},
+  'ATL': {'LAX': 300, 'ORD': 100},
+  'SFO': {'ORD': 200},
+  'LAX': {'ORD': 150},
+  'ORD': {}
+};
+
+const findCheapestFlight = (graph = {}, start, end) => {
+  const distance = {};
+  const queue = [];
   for(let node in graph) {
-    let size = explore(graph, node, visited);
-    if(size > largest) largest = size;
+    distance[node] = Infinity;
   }
-  return largest;
+  queue.push([start, 0]);
+  distance[start] = 0;
+  while(queue.length > 0) {
+    queue.sort((a, b) => a[1] - b[1]);
+    const [currentAirport, currentCost] = queue.shift();
+    if(currentAirport === end) return currentCost;
+    for(let neighbor in graph[currentAirport]) {
+      const newCost = currentCost + graph[currentAirport][neighbor];
+      if(newCost < distance[neighbor]) {
+        distance[neighbor] = newCost;
+        queue.push([neighbor, newCost]);
+      }
+    }
+  }
+  return "No path found"
 }
 
-const explore = (graph, node, visited = new Set()) => {
-  if(visited.has(node)) return 0;
-  visited.add(node);
-  let size = 1;
-  for(let neighbor of graph[node]) {
-    size += explore(graph, neighbor, visited);
-  }
-  return size;
-}
-
-
-const result = largestComponent({
-  0: ['8', '1', '5'],
-  1: ['0'],
-  5: ['0', '8'],
-  8: ['0', '5'],
-  2: ['3', '4'],
-  3: ['2', '4'],
-  4: ['3', '2']
-}); // - 4
-
-console.log(result);
+const start = 'JFK';
+const end = 'ORD';
+const result = findCheapestFlight(graph, start, end);
+console.log(`The cheapest flight from ${start} to ${end} costs: ${result}`);

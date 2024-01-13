@@ -11,14 +11,14 @@
 // }
 
 const debounce = (func, wait) => {
-  let timeout;
+  let timer;
   return (...args) => {
     const later = () => {
-      clearTimeout(timeout);
+      clearTimeout(timer);
       func(...args);
     }
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    clearTimeout(timer);
+    timer = setTimeout(later, wait);
   }
 }
 

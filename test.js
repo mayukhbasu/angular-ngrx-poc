@@ -736,3 +736,26 @@
 //   data(2);
   
 // }).then(element => console.log("Promise "+element));
+// async function fetchData() {
+//   const prom = new Promise((resolve, reject) => {
+//     resolve('2');
+//   });
+//   const data = await prom;
+//   console.log(data);
+// }
+
+// fetchData();
+const mapObjectProperties = (user, fn) => {
+  return Object.keys(user).reduce((acc, key) => {
+    acc[key] = fn(user, key)
+    return acc;
+  }, {})
+}
+const user = {
+  id: 1,
+  name: "John Doe",
+  email: "john@example.com"
+};
+
+const lengthMap = mapObjectProperties(user, (key, value) => value.toString().length);
+console.log(lengthMap); // Output: { id: 1, name: 8, email: 15 }

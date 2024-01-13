@@ -9,5 +9,5 @@ const isSubArrayWithZeroSum = (arr = []) => {
   return false;
 }
 
-const arr =  [1, 4, -2, -2, 5, -4, 3];
+const arr =  [1, -1,-1, -1, -1, 4,  5, -4, 3];
 console.log(isSubArrayWithZeroSum(arr));

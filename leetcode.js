@@ -273,32 +273,32 @@ const chunkArray = (arr = [], size) => {
   return chunked
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const size = 4;
-console.log(chunkArray(arr, size));
+const arr = [1,2,3,4,5,6,7,8,9]
+//o/p: [[1,2,3,4],[5,6,7,8],[9]]
+
 
 // Write code that enhances all arrays such that you can 
 // call the array.groupBy(fn) method on any array and it will 
 // return a grouped version of the array.
-// Array.prototype.groupBy = function(fn) {
-//   const grouped = {};
-//   for(let item of this) {
-//     const key  = fn(item);
-//     if(!grouped[key]) grouped[key] = [];
-//     grouped[key].push(item);
-//   }
-//   return grouped;
-// }
+Array.prototype.groupBy = function(fn) {
+  const grouped = {};
+  for(let item of this) {
+    const key  = fn(item);
+    if(!grouped[key]) grouped[key] = [];
+    grouped[key].push(item);
+  }
+  return grouped;
+}
 
-// const people = [
-//   { name: "Alice", age: 25 },
-//   { name: "Bob", age: 30 },
-//   { name: "Charlie", age: 25 },
-//   { name: "David", age: 30 }
-// ];
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 25 },
+  { name: "David", age: 30 }
+];
 
-// const groupedByAge = people.groupBy(person => person.age);
-// console.log(groupedByAge);
+const groupedByAge = people.groupBy(person => person.age);
+console.log(groupedByAge);
 
 //flatten deeply nested array
 
@@ -412,11 +412,40 @@ console.log(chunkArray(arr, size));
 // }
 
 // Example usage:
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.customMap(num => num * 2);
-console.log(doubled);  // [2, 4, 6, 8]
+// const numbers = [1, 2, 3, 4];
+// const doubled = numbers.customMap(num => num * 2);
+// console.log(doubled);  // [2, 4, 6, 8]
 
+// const createToggle = (onState, offState) => {
+//   let defaultState = onState;
+//   return {
+//     toggle() {
+//        defaultState = defaultState === onState ? offState : onState;
+//     },
+//     getState() {
+//       return defaultState;
+//     },
+//     reset() {
+//       return onState;
+//     }
+//   }
+// }
 
+const lightSwitch = createToggle('ON', 'OFF');
+
+console.log(lightSwitch.getState());  // "ON"
+lightSwitch.toggle();
+console.log(lightSwitch.getState());  // "OFF"
+lightSwitch.toggle();
+console.log(lightSwitch.getState());  // "ON"
+lightSwitch.reset();
+console.log(lightSwitch.getState());  // "ON"
+
+// const test = () => {
+//   console.log(this)
+// }
+
+// test()
 
 
 

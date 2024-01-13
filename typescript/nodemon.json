@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ext": ".ts",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "ts-node ./src/design-leaderboard.ts"
+  "exec": "ts-node ./src/generics/multiple-types.ts"
 }

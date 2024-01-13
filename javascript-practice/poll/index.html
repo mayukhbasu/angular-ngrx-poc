@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3 Tidy Tree in a Box</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Poll Component</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="box">
-        <svg width="600" height="400"></svg>
+    <div class="poll-container">
+        <h2>Which framework do you prefer?</h2>
+        <form id="pollForm">
+            <div class="option">
+                <input type="radio" id="angular" name="framework" value="Angular">
+                <label for="angular">Angular</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="react" name="framework" value="React">
+                <label for="react">React</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="vue" name="framework" value="Vue">
+                <label for="vue">Vue</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="pollResult"></div>
     </div>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

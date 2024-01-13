@@ -1,34 +1,14 @@
-const data = [
-  "Apple",
-  "Banana",
-  "Cherry",
-  "Date",
-  "Elderberry",
-  "Fig",
-  "Grape",
-  "Honeydew",
-  "Iced fruit",
-  "Jackfruit"
-];
+const datesContainer = document.getElementById('dates');
+const startDay = new Date(2023, 11, 1).getDay();
+const daysInMonth = 30;
 
-const filterOptions = () => {
-  const search = document.getElementById('search');
-  const lists = document.getElementById('lists');
-  const filteredResults = data.filter(fruit => fruit.toLowerCase().startsWith(search.value.toLowerCase()));
-  lists.innerHTML = '';
-  if(search.value.trim() === '') {
-    lists.style.display = 'none';
-    return;
-  }
-  for(let result of filteredResults) {
-    const div = document.createElement('div');
-    div.textContent = result;
-    div.addEventListener('click', () => {
-      search.value = result;
-      lists.style.display = 'none';
-    });
-    lists.appendChild(div);
-  }
-  lists.style.display = filteredResults.length > 0 ? 'block': 'none'
+for(let i = 0; i < startDay; i++) {
+  const emptySpan = document.createElement('span');
+  datesContainer.appendChild(emptySpan);
 }
 
+for(let i = 1; i <= daysInMonth; i++) {
+  const dateSpan = document.createElement('span');
+  dateSpan.textContent = i;
+  datesContainer.appendChild(dateSpan);
+}
